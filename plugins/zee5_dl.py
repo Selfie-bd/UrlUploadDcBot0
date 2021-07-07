@@ -200,7 +200,7 @@ async def zee5_execute(bot, update):
   
     try:
         cb_data = update.data
-        tg_send_type, youtube_dl_format, youtube_dl_ext = cb_data.split("|")
+        tg_send_type, youtube_dl_format, youtube_dl_ext = cb_data.split("*")
         
         thumb_image_path = Config.DOWNLOAD_LOCATION + \
             "/" + str(update.from_user.id) + ".jpg"
