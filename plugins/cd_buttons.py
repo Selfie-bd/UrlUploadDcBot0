@@ -9,7 +9,6 @@ import os
 import shutil
 import subprocess
 import time
-import pyrogram
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
@@ -25,9 +24,20 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
 from PIL import Image
+
+import pyrogram
+
 from plugins.zee5_dl import zee5_execute
 
-
+@Client.on_callback_query()
+async def formatbuttons(bot, update):
+       
+    if "|" in update.data:
+        await zee5_execute(bot, update)
+        
+    elif "closeformat" in update.data:     
+        await update.message.delete()
+        
 @Client.on_callback_query()
 async def button(bot, update):
     cb_data = update.data
@@ -135,13 +145,4 @@ async def button(bot, update):
             disable_web_page_preview=True
         )
     else:
-        await update.message.delete()
-
-@Client.on_callback_query()
-async def formatbuttons(bot, update):
-       
-    if "*" in update.data:
-        await zee5_execute(bot, update)
-        
-    elif "closeformat" in update.data:     
         await update.message.delete()
