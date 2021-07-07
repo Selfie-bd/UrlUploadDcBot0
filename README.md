@@ -126,11 +126,11 @@ python3 bot.py
 
  
 <details>
-  <summary>`SCREENSHOTS`</summary>
+  <summary>SCREENSHOTS</summary>
                 
-              *If `True`  - Screenshot will be uploaded
+              *If "True"  - Screenshot will be uploaded
 
-              *If `False` - Screenshot will not be uploaded
+              *If "False" - Screenshot will not be uploaded
 </details>
 </details>
 <details>
