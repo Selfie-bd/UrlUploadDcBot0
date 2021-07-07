@@ -126,7 +126,7 @@ python3 bot.py
 
 `SCREENSHOTS` 
 <details>
-  <summary>`SCREENSHOTS`</summary>
+  <summary>SCREENSHOTS</summary>
                 
               *If `True`  - Screenshot will be uploaded
 
