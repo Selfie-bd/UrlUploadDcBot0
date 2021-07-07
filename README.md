@@ -93,13 +93,6 @@ AUTH_USERS=your_user_id
 ```
   </details>
 
-```sh
-git clone https://github.com/FayasNoushad/URL-Uploader
-cd URL-Uploader
-pip3 install -r requirements.txt
-# <Create Variables appropriately>
-python3 bot.py
-```
 
 <details>
   <summary><b>Vars and Details :</b></summary>
