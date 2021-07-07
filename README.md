@@ -38,8 +38,7 @@ Made with Python3
 
 ## ♢ How to make your own :
 
-Either you could locally host or deploy on [Heroku](https://heroku.com)
-
+Either you could locally host or deploy on [Heroku] By Clicking `Deploy on Heroku` Given below
 <br>
 
 #### ♢ Click on This Drop-down and get more details
