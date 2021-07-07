@@ -124,9 +124,9 @@ python3 bot.py
 
 `DEF_THUMB_NAIL_VID_S` : Link of the photo
 
-`SCREENSHOTS` 
+ 
 <details>
-  <summary>SCREENSHOTS</summary>
+  <summary>`SCREENSHOTS`</summary>
                 
               *If `True`  - Screenshot will be uploaded
 
