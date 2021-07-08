@@ -1,12 +1,12 @@
 class script(object):
 
-    START_TEXT = ""
+    START_TEXT = "_"
 
 
-    HELP_USER = ""
+    HELP_USER = "__"
 
 
-    ABOUT_TEXT = ""
+    ABOUT_TEXT = "____"
 
 
 
@@ -26,13 +26,13 @@ class script(object):
     
     RCHD_TG_API_LIMIT = "Downloaded in {} seconds.\nDetected File Size: {}\nSorry. But, I cannot upload files greater than 1.95GB due to Telegram API limitations."
 
-    AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = ""
+    AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = "______"
     
-    SAVED_CUSTOM_THUMB_NAIL = ""
+    SAVED_CUSTOM_THUMB_NAIL = "____"
     
-    DEL_ETED_CUSTOM_THUMB_NAIL = ""
+    DEL_ETED_CUSTOM_THUMB_NAIL = "-_-"
     
-    SHOW_THUMB = ""
+    SHOW_THUMB = "_-_"
     
     NO_THUMB = "SED😕 No saved thumbnails Found!!"
     
