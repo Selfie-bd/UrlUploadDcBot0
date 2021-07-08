@@ -88,7 +88,7 @@ async def zee5_capture(bot, update):
             return
             
     else:
-        await update.reply_text("", quote=True)
+        await update.reply_text("I can download from Zee5 links only! Use @UploadHEXbot for other links 😇", quote=True)
         return
     
     try:
@@ -145,11 +145,11 @@ async def zee5_capture(bot, update):
                     if format_string is not None and not "audio only" in format_string:
                         ikeyboard = [
                             InlineKeyboardButton(
-                                "🎞 VIDEO 🎞️  (" + format_string + ") " + approx_file_size + " ",
+                                "🎞 (" + format_string + ") " + approx_file_size + " ",
                                 callback_data=(cb_string_video).encode("UTF-8")
                             ),
                             InlineKeyboardButton(
-                                "🗂️ FILE 🗂️ " + format_ext + " " + approx_file_size + " ",
+                                "📁 FILE " + format_ext + " " + approx_file_size + " ",
                                 callback_data=(cb_string_file).encode("UTF-8")
                             )
                         ]                           
