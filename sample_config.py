@@ -56,3 +56,6 @@ class Config(object):
 
     # the download location, where the HTTP Server runs
     DOWNLOAD_LOCATION = "./DOWNLOADS"
+    
+    # Banned Unwanted Members..
+    BANNED_USERS = set(int(x) for x in os.environ.get("BANNED_USERS", "").split())
