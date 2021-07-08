@@ -11,7 +11,6 @@ if bool(os.environ.get("WEBHOOK", False)):
 else:
     from config import Config
 
-import pyrogram
 from pyrogram import Client
 
 if __name__ == "__main__" :
