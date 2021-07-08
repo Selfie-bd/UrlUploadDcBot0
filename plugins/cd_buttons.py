@@ -122,8 +122,6 @@ async def button(bot, update):
             )
     if "|" in update.data:
         await youtube_dl_call_back(bot, update)
-    elif "*" in update.data:
-        await zee5_execute(bot, update)
     elif "=" in update.data:
         await ddl_call_back(bot, update)
     elif update.data == "home":
