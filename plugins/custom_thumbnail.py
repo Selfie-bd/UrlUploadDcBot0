@@ -1,13 +1,10 @@
 import os
-import time
-import numpy
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
     from config import Config
 
-from PIL import Image
 from pyrogram import Client, filters    
 
 from translation import Translation
@@ -27,6 +24,7 @@ async def save_photo(bot, update):
         await sql.df_thumb(update.from_user.id, update.message_id)
         await bot.download_media(
             message=update,
+            file_name=download_location
         )
     else:
         # received single photo
