@@ -7,9 +7,8 @@ numpy
 Pillow
 ffmpeg-python
 ffmpeg
-pyrogram==1.0.7
+pyrogram
 feedparser
 requests
 tgcrypto
 youtube-dl
-olefile
