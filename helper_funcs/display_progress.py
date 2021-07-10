@@ -1,6 +1,5 @@
-import logging
-import math
 import os
+import math
 import time
 
 
@@ -11,24 +10,8 @@ async def progress_for_pyrogram(
     message,
     start
 ):
-    chat_id = self._mess.chat.id
-    mes_id = self._mess.message_id
-    from_user = self._from_user
     now = time.time()
     diff = now - start
-    reply_markup = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(
-                    "Cancel 🚫",
-                    callback_data=(
-                        f"gUPcancel/{chat_id}/{mes_id}/{from_user}"
-                    ).encode("UTF-8"),
-                )
-            ]
-        ]
-    )
-    
     if round(diff % 10.00) == 0 or current == total:
         # if round(current / total * 100, 0) % 5 == 0:
         percentage = current * 100 / total
@@ -40,12 +23,12 @@ async def progress_for_pyrogram(
         elapsed_time = TimeFormatter(milliseconds=elapsed_time)
         estimated_total_time = TimeFormatter(milliseconds=estimated_total_time)
 
-        progress = "<b>╭────── ⌊__UploadinG: 〘{2}%〙 📤__⌉</b>\n│ \n<b>├〖{0}{1}〗</b>\n".format(
+        progress = "[{0}{1}] \n<b>• Percentage :</b> {2}%\n".format(
             ''.join(["▣" for i in range(math.floor(percentage / 10))]),
             ''.join(["□" for i in range(10 - math.floor(percentage / 10))]),
             round(percentage, 2))
 
-        tmp = progress +"│" + "\n**├Total 📀:**   〘<code>{1}</code>〙\n**├Done ✓ :** 〘<code>{0}</code>〙\n**├Speed** 🚀 :  〘<code>{2}/s</code>〙\n**├ETA** ⏳ :  〘<code>{3}</code>〙\n**│**\n**╰── ⌊ @All_Movie_Rockers ⌉**".format(
+        tmp = progress + "<b>• Completed :</b> {0}\n<b>• Size :</b> {1}\n<b>• Speed :</b> {2}/s\n<b>• ETA :</b> {3}\n".format(
             humanbytes(current),
             humanbytes(total),
             humanbytes(speed),
