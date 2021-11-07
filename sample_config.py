@@ -14,6 +14,8 @@ class Config(object):
     #Session Name
     SESSION_NAME = os.environ.get("SESSION_NAME", "Rename-Bot-0")
     
+    MONGODB_URI = os.environ.get("MONGODB_URI", "")
+    
     #Owner ID
     BOT_OWNER = os.environ.get("BOT_OWNER", "")
 
