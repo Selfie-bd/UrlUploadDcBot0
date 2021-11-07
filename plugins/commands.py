@@ -5,7 +5,6 @@ import psutil
 import shutil
 import string
 import asyncio
-from pyromod import listen
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
