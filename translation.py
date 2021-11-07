@@ -97,8 +97,8 @@ Made by @shreevish
     
 Send your custum thumbnail if required.
 You can use /delthumb to delete the auto-generated thumbnail."""
-    CHECKING_LINK = "<code>Analysing Your Link</code>⏳"
-    BANNED_USER_TEXT = "<code>You are Banned!</code>"
+    CHECKING_LINK = "Analysing Your Link ⏳"
+    BANNED_USER_TEXT = "You are B A N N E D 🤣🤣🤣🤣"
     SET_CUSTOM_USERNAME_PASSWORD = """If you want to download premium videos Follow the steps :-
 
 ➲For Custom Name
@@ -106,14 +106,14 @@ You can use /delthumb to delete the auto-generated thumbnail."""
 
 ➲For Premium Videos
 ➼URL | FileName.Extension | username | password"""
-    DOWNLOAD_START = "<code>Downloading To My server Please Wait...</code>"    
-    UPLOAD_START = "<code>Uploading into Telegram...</code>"
-    AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = "Downloaded in {} seconds. \n\nUploaded in {} seconds."
-    RCHD_TG_API_LIMIT = "Downloaded in {} seconds.\nDetected File Size: {}\nSorry. But, I cannot upload files greater than 1.95GB due to Telegram API limitations."
+    DOWNLOAD_START = " 📥 Downloading to my server \n📥 Please wait...⏳ 🙇🙇🙇 \nIt takes time depend on File Size "    
+    UPLOAD_START = " 📤 Yay,File Download Successfully 😊 \nNow Uploading to Telegram 📤 "
+    AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = " 📤 Downloaded in {} seconds. \n\nUploaded in {} seconds."
+    RCHD_TG_API_LIMIT = " 📤 Downloaded in {} seconds.\nDetected File Size: {}\nSorry. But, I cannot upload files greater than 1.95GB due to Telegram API limitations."
     CUSTOM_CAPTION_UL_FILE = "<b>Join :-</b> @All_Movie_Rockers"
     SLOW_URL_DECED = "Gosh that seems to be a very slow URL. Since you were screwing my home, I am in no mood to download this file. Meanwhile, why don't you try this:==> https://shrtz.me/PtsVnf6 and get me a fast URL so that I can upload to Telegram, without me slowing down for other users."
-    NO_VOID_FORMAT_FOUND = "<code>{}</code>"
-    REPORT_SITE_TEXT = "<code>Sorry not uploading in this site here because this site is reporting site.</code>"
-    SOMETHING_WRONG = "<code>Something Wrong. Try again.</code>"
-    FORCE_SUBSCRIBE_TEXT = "<code>Sorry Dear You Must Join My Updates Channel for using me 😌😉....</code>"
+    NO_VOID_FORMAT_FOUND = "{}"
+    REPORT_SITE_TEXT = "🙅‍♂️Sorry not uploading in this site here because this site is reporting site.🙅‍"
+    SOMETHING_WRONG = "Something Wrong. Try again."
+    FORCE_SUBSCRIBE_TEXT = "**Join My Updates Channel to use ME 😎 🤭**"
     FREE_USER_LIMIT_Q_SZE = "Sorry Friend, Free users can only 1 request per {} minutes. Please try again after {} seconds later."
