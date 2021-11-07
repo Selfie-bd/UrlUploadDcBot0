@@ -6,6 +6,7 @@ else:
 from translation import Translation
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from plugins.broadcast import broadcast_handler
 
 @Client.on_message(filters.command(["start"]) & filters.private)
 async def start(bot, update):
@@ -30,3 +31,7 @@ async def get_me_info(bot, update):
         disable_web_page_preview=True,
         reply_markup=Translation.ABOUT_BUTTONS
     )
+@Client.on_message(filters.private & filters.command("broadcast") & filters.user(Config.BOT_OWNER) & filters.reply)
+async def _broadcast(_, event: Message):
+    await broadcast_handler(event)
+    
