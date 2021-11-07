@@ -3,10 +3,11 @@ import string
 import random
 import asyncio
 import datetime
-import aiofiles.os
+import aiofiles
 import traceback
-from sample_config import Config
-from helper_funcs.access_db import db
+import aiofiles.os
+from configs import Config
+from bot.core.db.database import db
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 
@@ -86,13 +87,17 @@ async def broadcast_handler(m: Message):
     await out.delete()
     if failed == 0:
         await m.reply_text(
-            text=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
+            text=f"broadcast completed in `{completed_in}`\n\n"
+                 f"Total users {total_users}.\n"
+                 f"Total done {done}, {success} success and {failed} failed.",
             quote=True
         )
     else:
         await m.reply_document(
             document='broadcast.txt',
-            caption=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
+            caption=f"broadcast completed in `{completed_in}`\n\n"
+                    f"Total users {total_users}.\n"
+                    f"Total done {done}, {success} success and {failed} failed.",
             quote=True
         )
     await aiofiles.os.remove('broadcast.txt')
