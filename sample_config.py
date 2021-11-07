@@ -70,4 +70,4 @@ class Config(object):
     BANNED_USERS = set(int(x) for x in os.environ.get("BANNED_USERS", "").split())
     
     #Broadcast
-    BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", False))
+    BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
