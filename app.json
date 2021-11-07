@@ -35,13 +35,22 @@
       "description": "Get this value from https://my.telegram.org"
       "value": ""
     },
+    "BOT_OWNER": {
+      "description": "Bot Owner UserID"
+    },
     "AUTH_USERS": {
       "description": "allow only pre-defined users to use this bot"
       "value": ""
     },
+    "MONGODB_URI": {
+      "description": "MongoDB Database URI for Saving UserID for Broadcast. Tutorial: https://www.youtube.com/watch?v=aXlF80Cn7iU"
+    },
     "TIME_LIMIT": {
       "description": "Set timeout for subprocess (In seconds)",
       "value": "0"
+    },
+    "BROADCAST_AS_COPY": {
+      "description": "Broadcast as Copy or with Forward Tag. Value should be True/False."
     },
     "UPDATE_CHANNEL": {
       "description": "For Force Subscribe. Paste your Update channel USERNAME (without @)..",
@@ -67,6 +76,9 @@
       "description": "Banned Unwanted members..",
       "value": "",
       "required": false
+    }
+    "SESSION_NAME": {
+      "description": "Any Bot Session Name."
     }
   },
   "addons": [
