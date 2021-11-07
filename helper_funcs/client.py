@@ -2,10 +2,12 @@ from typing import Union
 from pyromod import listen
 from pyrogram import Client as RawClient
 from pyrogram.storage import Storage
-from sample_config import Config
 
-LOGGER = Config.LOGGER
-log = LOGGER.getLogger(__name__)
+import logging
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
 class Client:
