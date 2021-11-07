@@ -39,7 +39,7 @@ async def get_me_info(bot, update):
         reply_markup=Translation.ABOUT_BUTTONS
     )
  
-@Client.on_message(filters.private & filters.command("broadcast") & filters.user(Config.BOT_OWNER) & filters.reply)
+@Client.on_message(filters.private & filters.command(["broadcast"]) & filters.user(Config.BOT_OWNER) & filters.reply)
 async def _broadcast(_, event: Message):
     await broadcast_handler(event)
     
