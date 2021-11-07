@@ -13,6 +13,7 @@ requests
 tgcrypto
 youtube-dl
 git+git://github.com/Satyamurthi/youtube-dl.git
+git+git://github.com/mongodb/motor
 dnspython
 aiofiles
 motor
