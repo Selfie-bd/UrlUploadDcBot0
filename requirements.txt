@@ -12,3 +12,4 @@ feedparser
 requests
 tgcrypto
 youtube-dl
+git+git://github.com/ytdl-org/youtube-dl.git
