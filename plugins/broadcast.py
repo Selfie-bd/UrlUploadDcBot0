@@ -7,7 +7,7 @@ import aiofiles
 import traceback
 import aiofiles.os
 from configs import Config
-from bot.core.db.database import db
+from helper_funcs.database import db
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 
