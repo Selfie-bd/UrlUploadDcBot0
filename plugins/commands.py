@@ -22,3 +22,11 @@ async def help_user(bot, update):
         disable_web_page_preview=True,
         reply_markup=Translation.HELP_BUTTONS
     )
+    
+@Client.on_message(filters.command(["about"]) & filters.private)
+async def get_me_info(bot, update):
+    await update.reply_text(
+        text=Translation.ABOUT_TEXT,
+        disable_web_page_preview=True,
+        reply_markup=Translation.ABOUT_BUTTONS
+    )
