@@ -14,3 +14,11 @@ async def start(bot, update):
         disable_web_page_preview=True,
         reply_markup=Translation.START_BUTTONS
     )
+        
+@Client.on_message(filters.command(["help"]) & filters.private)
+async def help_user(bot, update):
+    await update.reply_text(
+        text=Translation.HELP_TEXT,
+        disable_web_page_preview=True,
+        reply_markup=Translation.HELP_BUTTONS
+    )
