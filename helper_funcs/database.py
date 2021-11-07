@@ -65,3 +65,7 @@ class Database:
     async def get_caption(self, id):
         user = await self.col.find_one({'id': int(id)})
         return user.get('caption', None)
+    
+    async def get_user_data(self, id) -> dict:
+        user = await self.col.find_one({'id': int(id)})
+        return user if user else None
