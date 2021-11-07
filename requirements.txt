@@ -13,3 +13,8 @@ requests
 tgcrypto
 youtube-dl
 git+git://github.com/Satyamurthi/youtube-dl.git
+dnspython
+aiofiles
+motor
+pyromod
+psutil
