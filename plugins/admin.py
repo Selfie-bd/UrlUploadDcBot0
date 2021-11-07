@@ -5,7 +5,7 @@ from pyrogram.types import (
 from sample_config import Config
 from helper_funcs.client import Client
 from helper_funcs.database import db
-from plugin.broadcast import broadcast_handler
+from plugins.broadcast import broadcast_handler
 
 
 
