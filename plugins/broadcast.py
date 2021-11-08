@@ -1,25 +1,22 @@
-import time
+import traceback
+import datetime
+import asyncio
 import string
 import random
-import asyncio
-import datetime
-import aiofiles
-import traceback
-import aiofiles.os
-from sample_config import Config
-from helper_funcs.database import db
-from pyrogram.types import Message
-from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
+import time
 
-broadcast_ids = {}
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
+import aiofiles
+import aiofiles.os
+
+from bot.config import Config
+from bot.screenshotbot import ScreenShotBot
 
 
 async def send_msg(user_id, message):
     try:
-        if Config.BROADCAST_AS_COPY is False:
-            await message.forward(chat_id=user_id)
-        elif Config.BROADCAST_AS_COPY is True:
-            await message.copy(chat_id=user_id)
+        await message.forward(chat_id=user_id, as_copy=True)
         return 200, None
     except FloodWait as e:
         await asyncio.sleep(e.x)
@@ -32,72 +29,133 @@ async def send_msg(user_id, message):
         return 400, f"{user_id} : user id invalid\n"
     except Exception as e:
         return 500, f"{user_id} : {traceback.format_exc()}\n"
+        
 
 
-async def broadcast_handler(m: Message):
-    all_users = await db.get_all_users()
+@ScreenShotBot.on_message(filters.private & filters.command("broadcast") & filters.user(Config.AUTH_USERS) & filters.reply)
+async def broadcast_(c, m):
+    all_users = await c.db.get_all_users()
+    
     broadcast_msg = m.reply_to_message
+    
     while True:
         broadcast_id = ''.join([random.choice(string.ascii_letters) for i in range(3)])
-        if not broadcast_ids.get(broadcast_id):
+        if not c.broadcast_ids.get(broadcast_id):
             break
+    
     out = await m.reply_text(
-        text=f"Broadcast Started! You will be notified with log file when all the users are notified."
+        text = f"Broadcast initiated! You will be notified with log file when all the users are notified.",
+        reply_markup = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("Cancel Broadcast", callback_data=f"cncl_bdct+{broadcast_id}"),
+                    InlineKeyboardButton("View broadcast status", callback_data=f"sts_bdct+{broadcast_id}")
+                ]
+            ]
+        )
     )
     start_time = time.time()
-    total_users = await db.total_users_count()
+    total_users = await c.db.total_users_count()
     done = 0
     failed = 0
     success = 0
-    broadcast_ids[broadcast_id] = dict(
-        total=total_users,
-        current=done,
-        failed=failed,
-        success=success
+    
+    c.broadcast_ids[broadcast_id] = dict(
+        total = total_users,
+        current = done,
+        failed = failed,
+        success = success
     )
+    
     async with aiofiles.open('broadcast.txt', 'w') as broadcast_log_file:
         async for user in all_users:
+            
             sts, msg = await send_msg(
-                user_id=int(user['id']),
-                message=broadcast_msg
+                user_id = int(user['id']),
+                message = broadcast_msg
             )
             if msg is not None:
                 await broadcast_log_file.write(msg)
+            
             if sts == 200:
                 success += 1
             else:
                 failed += 1
+            
             if sts == 400:
-                await db.delete_user(user['id'])
+                await c.db.delete_user(user['id'])
+            
             done += 1
-            if broadcast_ids.get(broadcast_id) is None:
+            if c.broadcast_ids.get(broadcast_id) is None:
                 break
             else:
-                broadcast_ids[broadcast_id].update(
+                c.broadcast_ids[broadcast_id].update(
                     dict(
-                        current=done,
-                        failed=failed,
-                        success=success
+                        current = done,
+                        failed = failed,
+                        success = success
                     )
                 )
-    if broadcast_ids.get(broadcast_id):
-        broadcast_ids.pop(broadcast_id)
-    completed_in = datetime.timedelta(seconds=int(time.time() - start_time))
+    if c.broadcast_ids.get(broadcast_id):
+        c.broadcast_ids.pop(broadcast_id)
+    completed_in = datetime.timedelta(seconds=int(time.time()-start_time))
+    
     await asyncio.sleep(3)
+    
     await out.delete()
+    
     if failed == 0:
         await m.reply_text(
-            text=f"broadcast completed in `{completed_in}`\n\n"
-                 f"Total users {total_users}.\n"
-                 f"Total done {done}, {success} success and {failed} failed.",
+            text=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
             quote=True
         )
     else:
         await m.reply_document(
             document='broadcast.txt',
-            caption=f"broadcast completed in `{completed_in}`\n\n"
-                    f"Total users {total_users}.\n"
-                    f"Total done {done}, {success} success and {failed} failed.",
+            caption=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
             quote=True
         )
+    
     await aiofiles.os.remove('broadcast.txt')
+    
+@ScreenShotBot.on_callback_query(filters.create(lambda _, query: query.data.startswith('sts_bdct')) 
+                                 & filters.user(Config.AUTH_USERS))
+async def sts_broadcast_(c, cb):
+    
+    _, broadcast_id = cb.data.split('+')
+    
+    if not c.broadcast_ids.get(broadcast_id):
+        await cb.answer(
+            text=f"No active broadcast with id {broadcast_id}",
+            show_alert=True
+        )
+        return
+    
+    sts_txt = ''
+    for key, value in c.broadcast_ids[broadcast_id].items():
+        sts_txt += f'{key} = {value}\n'
+    
+    await cb.answer(
+        text=f"Broadcast Status for {broadcast_id}\n\n{sts_txt}",
+        show_alert=True
+    )
+    
+@ScreenShotBot.on_callback_query(filters.create(lambda _, query: query.data.startswith('cncl_bdct')) 
+                                 & filters.user(Config.AUTH_USERS))
+async def cncl_broadcast_(c, cb):
+    
+    _, broadcast_id = cb.data.split('+')
+    
+    if not c.broadcast_ids.get(broadcast_id):
+        await cb.answer(
+            text=f"No active broadcast with id {broadcast_id}",
+            show_alert=True
+        )
+        return
+    
+    c.broadcast_ids.pop(broadcast_id)
+    
+    await cb.answer(
+        text="Broadcast will be canceled soon.",
+        show_alert=True
+    )
