@@ -5,11 +5,10 @@
     "telegram",
     "url",
     "zee5",
-    "downloader"
+    "downloader",
     "uploader",
     "pyrogram"
   ],
-  
   "success_url": "https://github.com/Satyamurthi",
   "website": "https://github.com/Satyamurthi/AMR-Url_Uploader",
   "repository": "https://github.com/Satyamurthi/AMR-Url_Uploader",
@@ -71,7 +70,7 @@
     "SCREENSHOTS": {
       "description": "To get Screenshots (True/False)",
       "value": "0"
-    }
+    },
     "BANNED_USERS": {
       "description": "Banned Unwanted members..",
       "value": "",
