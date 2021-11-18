@@ -38,7 +38,3 @@ async def get_me_info(bot, update):
         disable_web_page_preview=True,
         reply_markup=Translation.ABOUT_BUTTONS
     )
-
-@Client.on_message(filters.command(["broadcast"]) & filters.private & filters.user(Config.BOT_OWNER) & filters.reply)
-async def _broadcast(_, event: Message):
-    await broadcast_handler(event)
