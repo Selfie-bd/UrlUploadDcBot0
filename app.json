@@ -75,7 +75,7 @@
       "description": "Banned Unwanted members..",
       "value": "",
       "required": false
-    }
+    },
     "SESSION_NAME": {
       "description": "Any Bot Session Name."
     }
