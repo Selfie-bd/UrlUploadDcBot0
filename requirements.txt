@@ -23,7 +23,6 @@ ffmpeg-python
 git+git://github.com/kkroening/ffmpeg-python.git
 
 ffmpeg
-git+git://github.com/FFmpeg/FFmpeg.git
 
 pyrogram
 git+git://github.com/pyrogram/pyrogram.git
