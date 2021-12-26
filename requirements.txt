@@ -53,3 +53,9 @@ git+git://github.com/giampaolo/psutil.git
 
 tgcrypto
 git+git://github.com/pyrogram/tgcrypto.git
+
+python-dotenv
+
+mutagen
+
+aiofiles
