@@ -17,7 +17,7 @@ class Config(object):
     MONGODB_URI = os.environ.get("MONGODB_URI", "")
     
     #Owner ID
-    BOT_OWNER = os.environ.get("BOT_OWNER", 1445283714)
+    BOT_OWNER = os.environ.get("BOT_OWNER", "1307550350")
 
     # Array to store users who are authorized to use the bot
     AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
@@ -46,7 +46,7 @@ class Config(object):
     UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "")
     
     # Log channel for banning spammers
-    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", -100))
+    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-100"))
 
     # maximum message length in Telegram
     MAX_MESSAGE_LENGTH = 4096
