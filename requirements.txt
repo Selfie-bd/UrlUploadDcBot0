@@ -53,5 +53,3 @@ git+git://github.com/giampaolo/psutil.git
 
 tgcrypto
 git+git://github.com/pyrogram/tgcrypto.git
-
-git+git://github.com/mongodb/mongo.git
