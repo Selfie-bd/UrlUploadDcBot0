@@ -34,16 +34,19 @@ from hachoir.parser import createParser
 from datetime import datetime
 from PIL import Image
 
-@Client.on_message(filters.private & filters.regex(pattern=".*http.*"))
+@Client.on_message(
+    filters.private &
+    filters.regex(pattern=".*http.*") &
+    filters.user(Config.AUTH_USERS) if Config.PRIVATE else None
+)
 async def echo(bot, update):
     if Config.LOG_CHANNEL:
         try:
-            log_message = await message.forward(Config.LOG_CHANNEL)
+            log_message = await update.forward(Config.LOG_CHANNEL)
             log_info = "Message Sender Information\n"
             log_info += "\nFirst Name: " + update.from_user.first_name
-            log_info += "\nUser ID: " + update.from_user.id
-            if update.from_user.username:
-                log_info += "\nUsername: " + update.from_user.username
+            log_info += "\nUser ID: " + str(update.from_user.id)
+            log_info += "\nUsername: @" + update.from_user.username if update.from_user.username else ""
             log_info += "\nUser Link: " + update.from_user.mention
             await log_message.reply_text(
                 text=log_info,
@@ -200,11 +203,11 @@ async def echo(bot, update):
                 if format_string is not None and not "audio only" in format_string:
                     ikeyboard = [
                         InlineKeyboardButton(
-                            "🎞 S " + format_string + " video " + approx_file_size + " ",
+                            "S " + format_string + " video " + approx_file_size + " ",
                             callback_data=(cb_string_video).encode("UTF-8")
                         ),
                         InlineKeyboardButton(
-                            "📁 D " + format_ext + " " + approx_file_size + " ",
+                            "D " + format_ext + " " + approx_file_size + " ",
                             callback_data=(cb_string_file).encode("UTF-8")
                         )
                     ]
@@ -221,13 +224,13 @@ async def echo(bot, update):
                 else:
                     ikeyboard = [
                         InlineKeyboardButton(
-                            "🎞 SVideo [" +
+                            "SVideo [" +
                             "] ( " +
                             approx_file_size + " )",
                             callback_data=(cb_string_video).encode("UTF-8")
                         ),
                         InlineKeyboardButton(
-                            "📁 DFile [" +
+                            "DFile [" +
                             "] ( " +
                             approx_file_size + " )",
                             callback_data=(cb_string_file).encode("UTF-8")
@@ -257,11 +260,11 @@ async def echo(bot, update):
                 "video", format_id, format_ext)
             inline_keyboard.append([
                 InlineKeyboardButton(
-                    "🎞 SVideo",
+                    "🎞️SVideo🎞️",
                     callback_data=(cb_string_video).encode("UTF-8")
                 ),
                 InlineKeyboardButton(
-                    "📁 DFile",
+                    "🗂️DFile🗂️",
                     callback_data=(cb_string_file).encode("UTF-8")
                 )
             ])
@@ -271,11 +274,11 @@ async def echo(bot, update):
                 "video", format_id, format_ext)
             inline_keyboard.append([
                 InlineKeyboardButton(
-                    "🎞 video",
+                    "video",
                     callback_data=(cb_string_video).encode("UTF-8")
                 ),
                 InlineKeyboardButton(
-                    " 📁 file",
+                    "file",
                     callback_data=(cb_string_file).encode("UTF-8")
                 )
             ])
@@ -322,11 +325,11 @@ async def echo(bot, update):
             "video", "OFL", "ENON")
         inline_keyboard.append([
             InlineKeyboardButton(
-                "🎞 SVideo",
+                "SVideo",
                 callback_data=(cb_string_video).encode("UTF-8")
             ),
             InlineKeyboardButton(
-                "📁 DFile",
+                "DFile",
                 callback_data=(cb_string_file).encode("UTF-8")
             )
         ])
