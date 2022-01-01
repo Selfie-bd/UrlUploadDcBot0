@@ -1,11 +1,8 @@
-# © @Satyamurthi
-
 import datetime
 import motor.motor_asyncio
 
 
 class Database:
-
     def __init__(self, uri, database_name):
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
         self.db = self._client[database_name]
@@ -14,11 +11,7 @@ class Database:
     def new_user(self, id):
         return dict(
             id=id,
-            join_date=datetime.date.today().isoformat(),
-            prefix=None,
-            upload_as_doc=True,
-            thumbnail=None,
-            caption=None
+            join_date=datetime.date.today().isoformat()
         )
 
     async def add_user(self, id):
