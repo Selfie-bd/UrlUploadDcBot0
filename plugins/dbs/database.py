@@ -39,4 +39,8 @@ class Database:
     async def delete_user(self, user_id):
         await self.col.delete_many({'id': int(user_id)})
         
+    async def get_user_data(self, id) -> dict:
+        user = await self.col.find_one({'id': int(id)})
+        return user if user else None        
+        
 db = Database(Config.MONGODB_URI, "shree")
