@@ -3,5 +3,5 @@
 from .send_flooded_message import SendFloodedMessage
 
 
-class New(SendFloodedMessage):
+class New(CustomUploader, SendFloodedMessage):
     """ New Methods for Pyrogram """
