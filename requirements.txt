@@ -1,23 +1,16 @@
 aiohttp
-git+git://github.com/aio-libs/aiohttp.git
 
 beautifulsoup4
-git+git://github.com/wention/BeautifulSoup4.git
 
 hachoir
-git+git://github.com/vstinner/hachoir.git
 
 psycopg2-binary
-git+git://github.com/psycopg/psycopg2.git
 
 numpy
-git+git://github.com/numpy/numpy.git
 
 Pillow
-git+git://github.com/python-pillow/Pillow.git
 
 ffmpeg-python
-git+git://github.com/kkroening/ffmpeg-python.git
 
 ffmpeg
 
@@ -28,7 +21,6 @@ feedparser
 git+git://github.com/kurtmckee/feedparser.git
 
 requests
-git+git://github.com/psf/requests.git
 
 youtube-dl
 git+git://github.com/ytdl-org/youtube-dl.git
@@ -40,16 +32,13 @@ dnspython
 git+git://github.com/rthalley/dnspython.git
 
 aiofiles
-git+git://github.com/Tinche/aiofiles.git
 
 pyromod
 git+git://github.com/usernein/pyromod.git
 
 psutil
-git+git://github.com/giampaolo/psutil.git
 
 tgcrypto
-git+git://github.com/pyrogram/tgcrypto.git
 
 python-dotenv
 
