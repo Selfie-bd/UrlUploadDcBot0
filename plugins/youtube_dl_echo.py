@@ -34,11 +34,7 @@ from hachoir.parser import createParser
 from datetime import datetime
 from PIL import Image
 
-@Client.on_message(
-    filters.private &
-    filters.regex(pattern=".*http.*") &
-    filters.user(Config.AUTH_USERS) if Config.PRIVATE else None
-)
+@Client.on_message(filters.private & filters.regex(pattern=".*http.*"))
 async def echo(bot, update):
     if Config.LOG_CHANNEL:
         try:
