@@ -1,6 +1,6 @@
 import datetime
 import motor.motor_asyncio
-from sample_configs import Config
+from sample_config import Config
 
 
 class Database:
