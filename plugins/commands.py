@@ -15,15 +15,16 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from plugins.broadcast import broadcast_handler
 
-@Client.on_message(filters.command(["start"]) & filters.private)
+@Client.on_message(filters.command(["start"]) & filters.private & filters.user(Config.AUTH_USERS) if Config.PRIVATE else None)
 async def start(bot, update):
     await update.reply_text(
         text=Translation.START_TEXT.format(update.from_user.mention),
         disable_web_page_preview=True,
         reply_markup=Translation.START_BUTTONS
     )
+    
 
-@Client.on_message(filters.command(["help"]) & filters.private)
+@Client.on_message(filters.command(["help"]) & filters.private & filters.user(Config.AUTH_USERS) if Config.PRIVATE else None)
 async def help_user(bot, update):
     await update.reply_text(
         text=Translation.HELP_TEXT,
@@ -31,7 +32,7 @@ async def help_user(bot, update):
         reply_markup=Translation.HELP_BUTTONS
     )
 
-@Client.on_message(filters.command(["about"]) & filters.private)
+@Client.on_message(filters.command(["about"]) & filters.private & filters.user(Config.AUTH_USERS) if Config.PRIVATE else None)
 async def get_me_info(bot, update):
     await update.reply_text(
         text=Translation.ABOUT_TEXT,
