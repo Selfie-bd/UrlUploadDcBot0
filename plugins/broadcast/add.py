@@ -1,5 +1,5 @@
 from sample_config import Config
-from .plugins.broadcast.database import db
+from plugins.broadcast.database import db
 from pyrogram import Client
 from pyrogram.types import Message
 
