@@ -14,7 +14,7 @@ from translation import Translation
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
-@Client.on_message(filters.command(["start"]) & filters.private & filters.user(Config.AUTH_USERS) if Config.PRIVATE else None)
+@Client.on_message(filters.command(["start"]) & filters.private)
 async def start(bot, update):
     await update.reply_text(
         text=Translation.START_TEXT.format(update.from_user.mention),
@@ -23,7 +23,7 @@ async def start(bot, update):
     )
     
 
-@Client.on_message(filters.command(["help"]) & filters.private & filters.user(Config.AUTH_USERS) if Config.PRIVATE else None)
+@Client.on_message(filters.command(["help"]) & filters.private)
 async def help_user(bot, update):
     await update.reply_text(
         text=Translation.HELP_TEXT,
@@ -31,7 +31,7 @@ async def help_user(bot, update):
         reply_markup=Translation.HELP_BUTTONS
     )
 
-@Client.on_message(filters.command(["about"]) & filters.private & filters.user(Config.AUTH_USERS) if Config.PRIVATE else None)
+@Client.on_message(filters.command(["about"]) & filters.private)
 async def get_me_info(bot, update):
     await update.reply_text(
         text=Translation.ABOUT_TEXT,
