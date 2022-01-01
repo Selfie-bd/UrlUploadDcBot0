@@ -15,8 +15,6 @@ from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, Peer
 
 broadcast_ids = {}
 
-BROADCAST_AS_COPY = Config.BROADCAST_AS_COPY
-
 
 async def send_msg(user_id, message):
     try:
@@ -91,13 +89,17 @@ async def broadcast_handler(m: Message):
     await out.delete()
     if failed == 0:
         await m.reply_text(
-            text=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
+            text=f"broadcast completed in `{completed_in}`\n\n"
+                 f"Total users {total_users}.\n"
+                 f"Total done {done}, {success} success and {failed} failed.",
             quote=True
         )
     else:
         await m.reply_document(
             document='broadcast.txt',
-            caption=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
+            caption=f"broadcast completed in `{completed_in}`\n\n"
+                    f"Total users {total_users}.\n"
+                    f"Total done {done}, {success} success and {failed} failed.",
             quote=True
         )
     await aiofiles.os.remove('broadcast.txt')
