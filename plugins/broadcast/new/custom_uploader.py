@@ -16,7 +16,7 @@ import math
 import inspect
 import asyncio
 import functools
-from sample_configs import Config
+from sample_config import Config
 from hashlib import sha256, md5
 from pyrogram.crypto import aes
 from pyrogram import raw
