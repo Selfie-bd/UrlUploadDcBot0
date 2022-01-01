@@ -2,8 +2,8 @@ from typing import Union
 from pyromod import listen
 from pyrogram import Client as RawClient
 from pyrogram.storage import Storage
-from configs import Config
-from bot.core.new import New
+from sample_config import Config
+from plugins.broadcast.new import New
 
 LOGGER = Config.LOGGER
 log = LOGGER.getLogger(__name__)
