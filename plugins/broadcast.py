@@ -8,7 +8,7 @@ import datetime
 import aiofiles.os
 import traceback
 from sample_config import Config
-from plugins.dbs.access_db import db
+from plugins.dbs.database import db
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
