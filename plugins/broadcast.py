@@ -14,6 +14,8 @@ from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, Peer
 
 broadcast_ids = {}
 
+BROADCAST_AS_COPY = config.BROADCAST_AS_COPY
+
 
 async def send_msg(user_id, message):
     try:
