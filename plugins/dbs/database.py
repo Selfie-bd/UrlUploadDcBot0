@@ -1,8 +1,10 @@
 import datetime
 import motor.motor_asyncio
+from sample_config import Config
 
 
 class Database:
+
     def __init__(self, uri, database_name):
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
         self.db = self._client[database_name]
@@ -11,7 +13,11 @@ class Database:
     def new_user(self, id):
         return dict(
             id=id,
-            join_date=datetime.date.today().isoformat()
+            join_date=datetime.date.today().isoformat(),
+            apply_caption=True,
+            upload_as_doc=False,
+            thumbnail=None,
+            caption=None
         )
 
     async def add_user(self, id):
@@ -32,3 +38,5 @@ class Database:
 
     async def delete_user(self, user_id):
         await self.col.delete_many({'id': int(user_id)})
+        
+db = Database(Config.MONGODB_URI, "shree")
