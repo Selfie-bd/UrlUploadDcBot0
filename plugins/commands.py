@@ -13,7 +13,6 @@ else:
 from translation import Translation
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from plugins.broadcast import broadcast_handler
 
 @Client.on_message(filters.command(["start"]) & filters.private & filters.user(Config.AUTH_USERS) if Config.PRIVATE else None)
 async def start(bot, update):
