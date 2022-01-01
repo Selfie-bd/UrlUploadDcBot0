@@ -142,5 +142,11 @@ async def button(bot, update):
             reply_markup=Translation.ABOUT_BUTTONS,
             disable_web_page_preview=True
         )
+    elif update.data == "donate":
+        await update.message.edit_text(
+            text=Translation.DONATE_TEXT,
+            reply_markup=Translation.DONATE_BUTTONS,
+            disable_web_page_preview=True
+        )
     else:
         await update.message.delete()
