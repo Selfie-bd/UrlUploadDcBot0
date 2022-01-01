@@ -20,7 +20,10 @@ BROADCAST_AS_COPY = Config.BROADCAST_AS_COPY
 
 async def send_msg(user_id, message):
     try:
-        await message.forward(chat_id=user_id)
+        if Config.BROADCAST_AS_COPY is False:
+            await message.forward(chat_id=user_id)
+        elif Config.BROADCAST_AS_COPY is True:
+            await message.copy(chat_id=user_id)
         return 200, None
     except FloodWait as e:
         await asyncio.sleep(e.x)
@@ -34,7 +37,7 @@ async def send_msg(user_id, message):
     except Exception as e:
         return 500, f"{user_id} : {traceback.format_exc()}\n"
 
-@Client.on_message(filters.command(["broadcast"]) & filters.private & filters.user(Config.BOT_OWNER) & filters.reply & ~filters.edited)
+
 async def broadcast_(m: Message):
     all_users = await db.get_all_users()
     broadcast_msg = m.reply_to_message
