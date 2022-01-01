@@ -45,3 +45,5 @@ python-dotenv
 mutagen
 
 aiofiles
+
+sqlalchemy
