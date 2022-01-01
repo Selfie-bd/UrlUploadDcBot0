@@ -20,10 +20,7 @@ BROADCAST_AS_COPY = Config.BROADCAST_AS_COPY
 
 async def send_msg(user_id, message):
     try:
-        if Config.BROADCAST_AS_COPY is False:
-            await message.forward(chat_id=user_id)
-        elif Config.BROADCAST_AS_COPY is True:
-            await message.copy(chat_id=user_id)
+        await message.forward(chat_id=user_id)
         return 200, None
     except FloodWait as e:
         await asyncio.sleep(e.x)
