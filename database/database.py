@@ -13,7 +13,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 def start() -> scoped_session:
-    engine = create_engine(Config.DB_URI, client_encoding="utf8")
+    engine = create_engine(Config.MONGODB_URI, client_encoding="utf8")
     BASE.metadata.bind = engine
     BASE.metadata.create_all(engine)
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
@@ -22,7 +22,6 @@ def start() -> scoped_session:
 BASE = declarative_base()
 SESSION = start()
 
-INSERTION_LOCK = threading.RLock()
 
 class Database(BASE):
     __tablename__ = "database"
@@ -67,7 +66,6 @@ class Database(BASE):
         return user.get('thumbnail', None)
     
     async def df_thumb(id, msg_id):
-    with INSERTION_LOCK:
         msg = SESSION.query(Thumbnail).get(id)
         if not msg:
             msg = Thumbnail(id, msg_id)
@@ -80,7 +78,6 @@ class Database(BASE):
         SESSION.commit()
     
     async def del_thumb(id):
-    with INSERTION_LOCK:
         msg = SESSION.query(Thumbnail).get(id)
         SESSION.delete(msg)
         SESSION.commit()
