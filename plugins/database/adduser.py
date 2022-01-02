@@ -1,5 +1,5 @@
 from pyrogram import Client
-from plugins.database.access import clinton
+from database.database.access import clinton
 from pyrogram.types import Message
 
 
