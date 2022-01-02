@@ -1,5 +1,15 @@
-import traceback, datetime, asyncio, string, random, time, os, aiofiles, aiofiles.os
-from plugins.database.access import clinton
+import traceback
+import datetime
+import asyncio 
+import string 
+import random 
+import time 
+import os
+import aiofiles
+import aiofiles.os
+
+from database.database.access import clinton
+
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
