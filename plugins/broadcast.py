@@ -6,7 +6,7 @@ from sample_config import Config
 from plugins.database.bd import broadcast_messages
 import asyncio
         
-@Client.on_message(filters.command(["broadcast"]) & filters.user([ADMINS]) & filters.reply)
+@Client.on_message(filters.command(["broadcast"]) & filters.user([Config.ADMINS]) & filters.reply)
 # https://t.me/GetTGLink/4178
 async def verupikkals(bot, message):
     users = await db.get_all_users()
