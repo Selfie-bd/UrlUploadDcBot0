@@ -18,6 +18,7 @@ class Config(object):
     APP_ID = int(os.environ.get("APP_ID", 12345))
     API_HASH = os.environ.get("API_HASH")
     
+    ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
     
     #Session Name
     SESSION_NAME = os.environ.get("SESSION_NAME", "Rename-Bot-0")
