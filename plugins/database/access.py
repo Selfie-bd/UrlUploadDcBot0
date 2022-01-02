@@ -1,4 +1,4 @@
 from sample_config import Config
-from plugins.database.database import Database
+from database.database.database import Database
 
-clinton = Database(Config.MONGODB_URI, Config.SESSION_NAME)
+clinton = Database(Config.MONGODB_URI, "url_bot")
