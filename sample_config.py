@@ -1,5 +1,6 @@
 import os
 import logging
+from os import environ
 
 logging.basicConfig(
     format='%(name)s - %(levelname)s - %(message)s',
