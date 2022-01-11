@@ -53,11 +53,11 @@
     },
     "OWNER_ID": {
       "description": "Your Telegram ID",
-      "value": ""
+      "value": "0"
     },
     "DATABASE_URL": {
       "description": "Your MongoDB URI",
-      "value": ""
+      "value": "0"
     },
     "SESSION_NAME": {
       "description": "Your Session Name",
@@ -65,7 +65,7 @@
     },
     "BANNED_USERS": {
       "description": "Banned Unwanted members..",
-      "value": "",
+      "value": "0",
       "required": false
     }
   },
