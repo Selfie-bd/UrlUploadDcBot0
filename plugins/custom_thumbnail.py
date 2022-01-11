@@ -16,7 +16,7 @@ else:
 # the Strings used for this "thing"
 from translation import Translation
 from pyrogram import Client
-from database.access import db
+from plugins.database.access import db
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
