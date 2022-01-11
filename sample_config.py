@@ -15,7 +15,7 @@ logging.basicConfig(
 class Config(object):
 
     # get a token from @BotFather
-    TG_BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 
     # The Telegram API things
     # Get these values from my.telegram.org
