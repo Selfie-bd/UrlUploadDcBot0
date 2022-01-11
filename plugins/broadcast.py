@@ -1,7 +1,7 @@
 import traceback, datetime, asyncio, string, random, time, os, aiofiles, aiofiles.os
-from plugins.database.access import clinton
+from plugins.database.access import client
 from pyrogram import filters
-from pyrogram import Client as Clinton
+from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 
@@ -29,7 +29,7 @@ async def send_msg(user_id, message):
         return 500, f"{user_id} : {traceback.format_exc()}\n"
         
 
-@Clinton.on_message(filters.private & filters.command('broadcast') & filters.reply)
+@Client.on_message(filters.private & filters.command('broadcast') & filters.reply)
 async def broadcast_(c, m):
     if m.from_user.id != Config.OWNER_ID:
         return
