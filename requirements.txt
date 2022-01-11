@@ -17,23 +17,23 @@ ffmpeg
 pyrogram
 
 feedparser
-git+git://github.com/kurtmckee/feedparser.git
+
 
 requests
 
 youtube-dl
-git+git://github.com/ytdl-org/youtube-dl.git
+
 
 motor
-git+git://github.com/mongodb/motor
+
 
 dnspython
-git+git://github.com/rthalley/dnspython.git
+
 
 aiofiles
 
 pyromod
-git+git://github.com/usernein/pyromod.git
+
 
 psutil
 
