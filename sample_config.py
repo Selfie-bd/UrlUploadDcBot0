@@ -80,6 +80,9 @@ class Config(object):
     # Sql Database url
     DB_URI = os.environ.get("DATABASE_URL", "")
 
+    # database uri (mongodb)
+    DS_URL = os.environ.get("DATABASE_URL", "")
+    
     # the download location, where the HTTP Server runs
     DOWNLOAD_LOCATION = "./DOWNLOADS"
     
