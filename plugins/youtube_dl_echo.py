@@ -28,7 +28,7 @@ from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 from helper_funcs import *
 from helper_funcs.display_progress import humanbytes
 from helper_funcs.help_uploadbot import DownLoadFile
-
+from database.database import AddUser
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from datetime import datetime
@@ -36,6 +36,7 @@ from PIL import Image
 
 @Client.on_message(filters.private & filters.regex(pattern=".*http.*"))
 async def echo(bot, update):
+    await AddUser(bot, update)
     if Config.LOG_CHANNEL:
         try:
             log_message = await message.forward(Config.LOG_CHANNEL)
