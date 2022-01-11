@@ -44,7 +44,7 @@ class Database:
         return user.get('thumbnail', None)
 
     
-db = Database(Config.MONGODB_URI, Config.SESSION_NAME)
+db = Database(Config.DB_URI, Config.SESSION_NAME)
 
 async def AddUser(bot: Client, update: Message):
     if not await db.is_user_exist(update.from_user.id):
