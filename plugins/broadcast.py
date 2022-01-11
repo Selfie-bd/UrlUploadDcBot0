@@ -1,5 +1,5 @@
 import traceback, datetime, asyncio, string, random, time, os, aiofiles, aiofiles.os
-from plugins.database.access import db
+from database.database import db
 from pyrogram import filters
 from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
