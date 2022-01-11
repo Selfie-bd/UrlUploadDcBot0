@@ -1,5 +1,5 @@
 import traceback, datetime, asyncio, string, random, time, os, aiofiles, aiofiles.os
-from plugins.database.access import client
+from plugins.database.access import db
 from pyrogram import filters
 from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -33,7 +33,7 @@ async def send_msg(user_id, message):
 async def broadcast_(c, m):
     if m.from_user.id != Config.OWNER_ID:
         return
-    all_users = await client.get_all_users()
+    all_users = await db.get_all_users()
     
     broadcast_msg = m.reply_to_message
     
@@ -46,7 +46,7 @@ async def broadcast_(c, m):
         text = f"Broadcast initiated! You will be notified with log file when all the users are notified."
     )
     start_time = time.time()
-    total_users = await client.total_users_count()
+    total_users = await db.total_users_count()
     done = 0
     failed = 0
     success = 0
@@ -74,7 +74,7 @@ async def broadcast_(c, m):
                 failed += 1
             
             if sts == 400:
-                await client.delete_user(user['id'])
+                await db.delete_user(user['id'])
             
             done += 1
             if broadcast_ids.get(broadcast_id) is None:
