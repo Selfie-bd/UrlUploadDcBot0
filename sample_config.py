@@ -80,10 +80,7 @@ class Config(object):
     DEF_WATER_MARK_FILE = ""
 
     # Sql Database url
-    DB_URI = os.environ.get("DATABASE_URL", "")
-
-    # database uri (mongodb)
-    DS_URL = os.environ.get("DATABASE_URL", "")
+    DB_URI = os.environ.get("DB_URI", "")
     
     # the download location, where the HTTP Server runs
     DOWNLOAD_LOCATION = "./DOWNLOADS"
