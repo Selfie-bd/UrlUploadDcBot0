@@ -15,13 +15,18 @@ else:
     from config import Config
 # the Strings used for this "thing"
 from translation import Translation
+
 from pyrogram import Client
-from plugins.database.access import db
+from pyrogram import filters
+
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
+
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-from pyrogram import filters
-from plugins.database.adduser import AddUser
+
+from database.database import db
+from database.database import AddUser
+
 from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 
 @Client.on_message(filters.private & filters.photo)
