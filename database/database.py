@@ -1,6 +1,11 @@
 import datetime
 import motor.motor_asyncio
 
+from sample_config import Config
+
+from pyrogram import Client
+from pyrogram.types import Message
+
 class Database:
 
     def __init__(self, uri, database_name):
@@ -37,3 +42,10 @@ class Database:
     async def get_thumbnail(self, id):
         user = await self.col.find_one({'id': int(id)})
         return user.get('thumbnail', None)
+
+    
+db = Database(Config.MONGODB_URI, Config.SESSION_NAME)
+
+async def AddUser(bot: Client, update: Message):
+    if not await db.is_user_exist(update.from_user.id):
+           await db.add_user(update.from_user.id)
