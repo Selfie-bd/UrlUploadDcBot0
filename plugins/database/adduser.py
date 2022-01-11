@@ -1,5 +1,5 @@
 from pyrogram import Client
-from database.access import db
+from plugins.database.access import db
 from pyrogram.types import Message
 
 
