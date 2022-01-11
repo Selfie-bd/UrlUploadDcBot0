@@ -15,7 +15,6 @@ ffmpeg-python
 ffmpeg
 
 pyrogram
-git+git://github.com/pyrogram/pyrogram.git
 
 feedparser
 git+git://github.com/kurtmckee/feedparser.git
