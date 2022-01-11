@@ -25,7 +25,7 @@ class Config(object):
     ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
     
     #Session Name
-    SESSION_NAME = os.environ.get("SESSION_NAME", "Rename-Bot-0")
+    SESSION_NAME = os.environ.get("SESSION_NAME", "")
     
     MONGODB_URI = os.environ.get("MONGODB_URI", "")
     
