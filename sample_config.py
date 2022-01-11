@@ -32,9 +32,9 @@ class Config(object):
     #Owner ID
     BOT_OWNER = os.environ.get("BOT_OWNER", "1307550350")
     
-    #OWNER_ID = int(os.environ.get("OWNER_ID"))
+    OWNER_ID = int(os.environ.get("OWNER_ID"))
     
-    OWNER_ID = set(int(x) for x in os.environ.get("OWNER_ID", "").split())
+    #OWNER_ID = set(int(x) for x in os.environ.get("OWNER_ID", "").split())
 
     # Array to store users who are authorized to use the bot
     AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
