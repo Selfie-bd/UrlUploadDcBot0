@@ -1,5 +1,5 @@
 import traceback, datetime, asyncio, string, random, time, os, aiofiles, aiofiles.os
-from database.access import clinton
+from plugins.database.access import clinton
 from pyrogram import filters
 from pyrogram import Client as Clinton
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
