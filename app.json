@@ -67,7 +67,7 @@
       "description": "Banned Unwanted members..",
       "value": "",
       "required": false
-    },
+    }
   },
   "addons": [
     {
