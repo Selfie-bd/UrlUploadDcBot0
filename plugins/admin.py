@@ -1,18 +1,18 @@
 import traceback
 import os
 
-from pyrogram import Client as Clinton
+from pyrogram import Client
 from pyrogram import filters
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
     from config import Config
-from plugins.database.access import clinton
+from plugins.database.access import client
 
-@Clinton.on_message(filters.private & filters.command('total'))
+@Client.on_message(filters.private & filters.command('total'))
 async def sts(c, m):
     if m.from_user.id != Config.OWNER_ID:
         return 
-    total_users = await clinton.total_users_count()
+    total_users = await client.total_users_count()
     await m.reply_text(text=f"Total user(s) {total_users}", quote=True)
