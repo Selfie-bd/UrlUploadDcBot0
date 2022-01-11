@@ -50,7 +50,24 @@
     "SCREENSHOTS": {
       "description": "To get Screenshots (True/False)",
       "value": "0"
-    }
+    },
+    "OWNER_ID": {
+      "description": "Your Telegram ID",
+      "value": ""
+    },
+    "DATABASE_URL": {
+      "description": "Your MongoDB URI",
+      "value": ""
+    },
+    "SESSION_NAME": {
+      "description": "Your Session Name",
+      "value": "URL-UPLOADER"
+    },
+    "BANNED_USERS": {
+      "description": "Banned Unwanted members..",
+      "value": "",
+      "required": false
+    },
   },
   "addons": [
     {
