@@ -34,7 +34,7 @@ async def broadcast_messages(user_id, message):
     except Exception as e:
         return False, "Error"
         
-@Client.on_message(filters.command("broadcast") & filters.user(Config.ADMINS) & filters.reply)
+@Client.on_message(filters.command(["broadcast"]) & filters.user(Config.ADMINS) & filters.reply)
 # https://t.me/GetTGLink/4178
 async def verupikkals(bot, message):
     users = await db.get_all_users()
