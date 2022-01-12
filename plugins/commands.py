@@ -15,16 +15,6 @@ from translation import Translation
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
-#############################################################
-
-
-
-
-
-from client import Client
-from database.access import db
-from helper_funcs.display_progress import humanbytes
-from plugins.broadcast import broadcast_handler
 
 ###############################################################
 
@@ -36,6 +26,7 @@ async def start(bot, update):
         reply_markup=Translation.START_BUTTONS
     )
     
+###############################################################
 
 @Client.on_message(filters.command(["help"]) & filters.private)
 async def help_user(bot, update):
@@ -45,19 +36,14 @@ async def help_user(bot, update):
         reply_markup=Translation.HELP_BUTTONS
     )
 
+###############################################################
+    
 @Client.on_message(filters.command(["about"]) & filters.private)
 async def get_me_info(bot, update):
     await update.reply_text(
         text=Translation.ABOUT_TEXT,
         disable_web_page_preview=True,
         reply_markup=Translation.ABOUT_BUTTONS
-    )
+    )  
 
-
-####################################################################################################################
-
-
-
-@Client.on_message(filters.command(["broadcast"]) & filters.user(Config.OWNER_ID) & filters.reply & ~filters.edited)
-async def broadcast_in(bot, update):
-    await broadcast_handler(update)    
+###############################################################
