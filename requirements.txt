@@ -9,3 +9,4 @@ tgcrypto
 youtube-dl
 olefile
 motor
+dnspython
