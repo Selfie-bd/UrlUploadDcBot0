@@ -1,4 +1,5 @@
 import os
+import threading
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
@@ -12,9 +13,14 @@ from sqlalchemy import Column, Integer
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
 
+if bool(os.environ.get("WEBHOOK", False)):
+    from sample_config import Config
+else:
+    from config import Config
+
 
 def start() -> scoped_session:
-    engine = create_engine(Config.MONGODB_URI, client_encoding="utf8")
+    engine = create_engine(Config.DB_URI, client_encoding="utf8")
     BASE.metadata.bind = engine
     BASE.metadata.create_all(engine)
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
@@ -29,7 +35,7 @@ class Thumbnail(BASE):
     __tablename__ = "thumbnail"
     id = Column(Integer, primary_key=True)
     msg_id = Column(Integer)
-    
+
     def __init__(self, id, msg_id):
         self.id = id
         self.msg_id = msg_id
