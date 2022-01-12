@@ -326,7 +326,7 @@ async def echo(bot, update):
         thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
 
         if not os.path.exists(thumb_image_path):
-            mes = await thumb(update.from_user.id)
+            mes = await get_thumbnail(update.from_user.id)
             if mes != None:
                 m = await bot.get_messages(update.chat.id, mes.msg_id)
                 await m.download(file_name=thumb_image_path)
