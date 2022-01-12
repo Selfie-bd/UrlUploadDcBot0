@@ -198,6 +198,8 @@ async def youtube_dl_call_back(bot, update):
                 )
             try:
                 await bot.edit_message_text(text=Translation.UPLOAD_START, chat_id=update.message.chat.id, message_id=update.message.message_id)
+                if trace_msg:
+                    await trace_msg.edit(f'**User Name:** {m.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Uploading')
             except:
                 pass
             # get the correct width, height, and duration for videos greater than 10MB
@@ -230,13 +232,6 @@ async def youtube_dl_call_back(bot, update):
                 img.save(thumb_image_path, "JPEG")
             else:
                 thumb_image_path = None
-   
-  try:
-        await send_message.edit(TEXT.UPLOAD_START)
-        if trace_msg:
-            await trace_msg.edit(f'**User Name:** {m.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Uploading')
-    except:
-        pass
       
             start_time = time.time()
             if tg_send_type == "audio":
