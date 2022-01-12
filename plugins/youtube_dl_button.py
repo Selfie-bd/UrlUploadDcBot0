@@ -3,36 +3,29 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-
 import asyncio
 import json
 import os
 import shutil
 import time
-
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
     from config import Config
-
 from datetime import datetime
 from hachoir.parser import createParser
 from hachoir.metadata import extractMetadata
 from pyrogram.types import InputMediaPhoto
-
 from translation import Translation
 from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from PIL import Image
-
-
 async def youtube_dl_call_back(bot, update):
     cb_data = update.data
     tg_send_type, youtube_dl_format, youtube_dl_ext = cb_data.split("|")
     thumb_image_path = Config.DOWNLOAD_LOCATION + \
         "/" + str(update.from_user.id) + ".jpg"
-
     save_ytdl_json_path = Config.DOWNLOAD_LOCATION + \
         "/" + str(update.from_user.id) + ".json"
     try:
@@ -76,7 +69,6 @@ async def youtube_dl_call_back(bot, update):
             youtube_dl_username = youtube_dl_username.strip()
         if youtube_dl_password is not None:
             youtube_dl_password = youtube_dl_password.strip()
-
     else:
         for entity in update.message.reply_to_message.entities:
             if entity.type == "text_link":
@@ -136,7 +128,6 @@ async def youtube_dl_call_back(bot, update):
     if "hotstar" in youtube_dl_url:
         command_to_exec.append("--geo-bypass-country")
         command_to_exec.append("IN")
-
     start = datetime.now()
     process = await asyncio.create_subprocess_exec(
         *command_to_exec,
@@ -198,8 +189,6 @@ async def youtube_dl_call_back(bot, update):
                 )
             try:
                 await bot.edit_message_text(text=Translation.UPLOAD_START, chat_id=update.message.chat.id, message_id=update.message.message_id)
-                if trace_msg:
-                    await trace_msg.edit(f'**User Name:** {m.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Uploading')
             except:
                 pass
             # get the correct width, height, and duration for videos greater than 10MB
@@ -211,7 +200,6 @@ async def youtube_dl_call_back(bot, update):
                 if metadata is not None:
                     if metadata.has("duration"):
                         duration = metadata.get('duration').seconds
-
             if os.path.exists(thumb_image_path):
                 width = 0
                 height = 0
@@ -232,7 +220,6 @@ async def youtube_dl_call_back(bot, update):
                 img.save(thumb_image_path, "JPEG")
             else:
                 thumb_image_path = None
-      
             start_time = time.time()
             if tg_send_type == "audio":
                 await update.message.reply_to_message.reply_chat_action("upload_audio")
@@ -312,7 +299,6 @@ async def youtube_dl_call_back(bot, update):
                 logger.info("Did this happen? :\\")
             end_two = datetime.now()
             time_taken_for_upload = (end_two - end_one).seconds
-
             media_album_p = []
             if Config.SCREENSHOTS:
                 if images is not None:
