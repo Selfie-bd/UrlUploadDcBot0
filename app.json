@@ -22,6 +22,10 @@
       "description": "Setting this to ANYTHING will enable webhooks when in env mode",
       "value": "ANYTHING"
     },
+    "ADMINS": {
+      "description": "Username or ID of Admin. Separate multiple Admins by space.",
+      "required": true
+    },
     "TG_BOT_TOKEN": {
       "description": "Your bot token, as a string.",
       "value": ""
@@ -56,6 +60,14 @@
     "CHUNK_SIZE": {
       "description": "chunk size that should be used with requests",
       "value": "128"
+    },
+    "MONGODB_URI": {
+      "description": "mongoDB URI. Get this value from https://www.mongodb.com. For more help watch this video - https://youtu.be/dsuTn4qV2GA",
+      "required": false
+    },
+    "DATABASE_NAME": {
+      "description": "Name of the database in mongoDB. For more help watch this video - https://youtu.be/dsuTn4qV2GA",
+      "required": false
     },
     "HTTP_PROXY": {
       "description": "proxy for accessing youtube-dl in GeoRestricted Areas. Get your own proxy from https://github.com/rg3/youtube-dl/issues/1091#issuecomment-230163061",
