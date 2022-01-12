@@ -27,4 +27,4 @@ filetype
 tldextract
 motor
 https://github.com/Tinche/aiofiles/archive/master.zip
-shutil
+cpython
