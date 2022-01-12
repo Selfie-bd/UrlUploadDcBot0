@@ -42,7 +42,7 @@ class Config(object):
     TG_MAX_FILE_SIZE = 2097152000
 
     # chunk size that should be used with requests
-    #CHUNK_SIZE = 128
+    CHUNK_SIZE = 128
 
     # Generate screenshots for file after uploading
     # Defaults to True
