@@ -71,7 +71,7 @@ async def echo(bot, update):
         except Exception as e:
             logger.warning(e)
 
-    download_location = f'{Config.DOWNLOAD_LOCATION}/{m.from_user.id}/'
+    download_location = f'{Config.DOWNLOAD_LOCATION}/{update.from_user.id}/'
     if not os.path.isdir(download_location):
         os.makedirs(download_location)
 
@@ -86,7 +86,7 @@ async def echo(bot, update):
         logger.error(e)
         await send_message.edit(f"**Error:** {e}")
         if trace_msg:
-            await trace_msg.edit(f'**User Name:** {m.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Failed\n\nCheck logs for error')
+            await trace_msg.edit(f'**User Name:** {update.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Failed\n\nCheck logs for error')
         return
 
     new_file_location = f"{download_location}{new_file_name}"
