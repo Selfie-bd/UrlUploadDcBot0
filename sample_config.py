@@ -1,5 +1,7 @@
 import os
 from os import environ
+import re
+id_pattern = re.compile(r'^.\d+$')
 
 class Config(object):
     # get a token from https://chatbase.com
