@@ -63,8 +63,7 @@ async def button(bot, update):
                 message_id=update.message.message_id
             )
         elif index_extractor == "ALL":
-
-    i = 0
+            i = 0
             for file_content in zip_file_contents:
                 current_file_name = os.path.join(extract_dir_path, file_content)
                 start_time = time.time()
