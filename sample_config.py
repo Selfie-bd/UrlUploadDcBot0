@@ -22,15 +22,7 @@ class Config(object):
     APP_ID = int(os.environ.get("APP_ID", 12345))
     API_HASH = os.environ.get("API_HASH")
     
-    ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
     
-    DATABASE_URI = environ.get('DATABASE_URI', "")
-    DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
-
-    #Session Name
-    SESSION_NAME = os.environ.get("SESSION_NAME", "")
-    
-    MONGODB_URI = os.environ.get("MONGODB_URI", "")
     
     #Owner ID
     BOT_OWNER = os.environ.get("BOT_OWNER", "1307550350")
@@ -82,8 +74,7 @@ class Config(object):
     # watermark file
     DEF_WATER_MARK_FILE = ""
 
-    # Sql Database url
-    DB_URI = os.environ.get("DATABASE_URL", "")
+    
     
     # the download location, where the HTTP Server runs
     DOWNLOAD_LOCATION = "./DOWNLOADS"
@@ -93,3 +84,13 @@ class Config(object):
     
     #Broadcast
     BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
+    # database uri (mongodb)
+    DATABASE_URL = os.environ.get("DATABASE_URL", "")
+    ##MONGODB_URI = os.environ.get("MONGODB_URI", "")
+    # Sql Database url
+    ##DB_URI = os.environ.get("DATABASE_URL", "")
+    #Session Name
+    SESSION_NAME = os.environ.get("SESSION_NAME", "")
+    ##ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
+    ##DATABASE_URI = environ.get('DATABASE_URI', "")
+    ##DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
