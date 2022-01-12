@@ -36,3 +36,7 @@ class Config(object):
     PROCESS_MAX_TIMEOUT = 3600
     # watermark file
     DEF_WATER_MARK_FILE = ""
+    # for broadcast
+    ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
+    MONGODB_URI = os.environ.get("MONGODB_URI", "")
+    DATABASE_NAME = environ.get('DATABASE_NAME', "Shree")
