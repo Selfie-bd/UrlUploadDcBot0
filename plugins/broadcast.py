@@ -1,7 +1,8 @@
+
 from pyrogram import Client, filters
 import datetime
 import time
-from plugins.database.users_chats_db import db
+from database.users_chats_db import db
 from sample_config import Config
 import asyncio
 
