@@ -30,7 +30,7 @@ from helper_funcs import *
 from helper_funcs.display_progress import humanbytes
 from helper_funcs.help_uploadbot import DownLoadFile
 
-from database.add_user import AddUser
+from database.adduser import AddUser
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
