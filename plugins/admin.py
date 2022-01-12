@@ -1,3 +1,4 @@
+import os
 import motor.motor_asyncio
 
 if bool(os.environ.get("WEBHOOK", False)):
