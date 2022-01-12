@@ -230,7 +230,14 @@ async def youtube_dl_call_back(bot, update):
                 img.save(thumb_image_path, "JPEG")
             else:
                 thumb_image_path = None
-
+   
+  try:
+        await send_message.edit(TEXT.UPLOAD_START)
+        if trace_msg:
+            await trace_msg.edit(f'**User Name:** {m.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Uploading')
+    except:
+        pass
+      
             start_time = time.time()
             if tg_send_type == "audio":
                 await update.message.reply_to_message.reply_chat_action("upload_audio")
