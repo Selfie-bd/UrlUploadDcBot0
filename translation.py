@@ -88,6 +88,14 @@ Made by @shreevish
     ABOUT_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('🏠Home🏠', callback_data='home'),
+        InlineKeyboardButton('🤑Donate🤑', callback_data='donate'),
+        ],[
+        InlineKeyboardButton('🔐Close🔐', callback_data='close')
+        ]]
+    )
+    DONATE_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('🏠Home🏠', callback_data='home'),
         InlineKeyboardButton('💡Help💡', callback_data='help'),
         ],[
         InlineKeyboardButton('🔐Close🔐', callback_data='close')
