@@ -144,7 +144,7 @@ async def ddl_call_back(bot, update):
                 thumb_image_path = None
 
             start_time = time.time()
-           
+
             if tg_send_type == "audio":
                 await bot.send_audio(
                     chat_id=update.message.chat.id,
