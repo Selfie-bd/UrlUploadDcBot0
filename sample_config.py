@@ -85,12 +85,12 @@ class Config(object):
     #Broadcast
     BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
     # database uri (mongodb)
-    DATABASE_URL = os.environ.get("DATABASE_URL", "")
-    ##MONGODB_URI = os.environ.get("MONGODB_URI", "")
+    ##DATABASE_URL = os.environ.get("DATABASE_URL", "")
+    MONGODB_URI = os.environ.get("MONGODB_URI", "")
     # Sql Database url
     ##DB_URI = os.environ.get("DATABASE_URL", "")
     #Session Name
-    SESSION_NAME = os.environ.get("SESSION_NAME", "")
+    ##SESSION_NAME = os.environ.get("SESSION_NAME", "")
     ##ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
     ##DATABASE_URI = environ.get('DATABASE_URI', "")
     ##DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
