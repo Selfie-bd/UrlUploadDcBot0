@@ -10,7 +10,7 @@ else:
     from config import Config
 from database.database import db
 
-@Client.on_message(filters.private & filters.command('total'))
+@Client.on_message(filters.private & filters.command(["total"]))
 async def sts(c, m):
     if m.from_user.id != Config.OWNER_ID:
         return 
