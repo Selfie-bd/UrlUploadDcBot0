@@ -44,7 +44,8 @@ class Database:
         return user.get('thumbnail', None)
 
     
-db = Database(Config.DB_URI, Config.SESSION_NAME)
+#db = Database(Config.DB_URI, Config.SESSION_NAME)
+db = Database(Config.DATABASE_URI, Config.DATABASE_NAME)
 
 async def AddUser(bot: Client, update: Message):
     if not await db.is_user_exist(update.from_user.id):
