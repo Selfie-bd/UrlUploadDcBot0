@@ -12,7 +12,6 @@ from pyrogram import Client, filters
 
 from translation import Translation
 
-from script import script
 import database.database as sql
 from database.database import *
 
