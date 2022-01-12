@@ -1,10 +1,14 @@
 import os
+
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
     from config import Config
+
 from pyrogram import Client, filters    
+
 from translation import Translation
+
 import database.database as sql
 from database.database import *
 
@@ -47,6 +51,7 @@ async def delete_thumbnail(bot, update):
         #os.remove(download_location + ".json")
     except:
         pass
+
     await bot.send_message(
         chat_id=update.chat.id,
         text ="**✅ Custom Thumbnail cleared succesfully**",
