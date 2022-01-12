@@ -28,7 +28,7 @@ async def send_msg(user_id, message):
         return 500, f"{user_id} : {traceback.format_exc()}\n"
 
 
-@Client.on_message(filters.private & filters.command(["broadcast"]) & filters.reply)
+@Client.on_message(filters.private & filters.command('broadcast') & filters.reply)
 async def broadcast_(bot, update):
     if update.from_user.id != Config.OWNER_ID:
         return
@@ -57,7 +57,7 @@ async def broadcast_(bot, update):
         success = success
     )
 
-    async with aiofiles.open("broadcast.txt", "w") as broadcast_log_file:
+    async with aiofiles.open('broadcast.txt', 'w') as broadcast_log_file:
         async for user in all_users:
 
             sts, msg = await send_msg(
