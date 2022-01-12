@@ -134,4 +134,4 @@ class Database:
       
 ###############################################################
 
-db = Database(Config.DATABASE_URL, Config.DATABASE_NAME)
+db = Database(Config.MONGODB_URI, Config.DATABASE_NAME)
