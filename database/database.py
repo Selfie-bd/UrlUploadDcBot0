@@ -1,7 +1,5 @@
 import datetime
 import motor.motor_asyncio
-from sample_config import Config
-
 
 class Database:
 
@@ -39,22 +37,3 @@ class Database:
     async def get_thumbnail(self, id):
         user = await self.col.find_one({'id': int(id)})
         return user.get('thumbnail', None)
-
-
-
-
-
-
-###############################################################
-
-
-
-db = Database(Config.DATABASE_URL, "URL-BoT")
-
-
-
-###############################################################
-
-async def AddUser(bot, update):
-    if not await db.is_user_exist(update.from_user.id):
-           await db.add_user(update.from_user.id)
