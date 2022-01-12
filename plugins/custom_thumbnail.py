@@ -1,14 +1,18 @@
 import os
+import time
+import numpy
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
     from config import Config
 
+from PIL import Image
 from pyrogram import Client, filters    
 
 from translation import Translation
 
+from script import script
 import database.database as sql
 from database.database import *
 
@@ -71,7 +75,7 @@ async def show_thumb(bot, update):
             thumb_image_path = thumb_image_path
         else:
             thumb_image_path = None    
-    
+
     if thumb_image_path is not None:
         try:
             await bot.send_photo(
@@ -80,7 +84,7 @@ async def show_thumb(bot, update):
             )
         except:
             pass
-        
+
     elif thumb_image_path is None:
         await bot.send_message(
             chat_id=update.chat.id,
