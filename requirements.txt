@@ -19,7 +19,7 @@ pyromod
 psutil
 python-dotenv
 requests
-sqlalchemy==1.3.20
+sqlalchemy==1.4.29
 tgcrypto
 tldextract
 youtube-dl
