@@ -25,13 +25,18 @@ from translation import Translation
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel
+
 from helper_funcs import *
 from helper_funcs.display_progress import humanbytes
 from helper_funcs.help_uploadbot import DownLoadFile
-from database.database import AddUser
+
+from database.add_user import AddUser
+
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
+
 from datetime import datetime
+
 from PIL import Image
 
 @Client.on_message(filters.private & filters.regex(pattern=".*http.*"))
