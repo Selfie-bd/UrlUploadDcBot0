@@ -24,8 +24,8 @@ from hachoir.parser import createParser
 
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
-from database.database import db
-from database.database import AddUser
+from database.access import db
+from database.add_user import AddUser
 
 from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 
