@@ -1,7 +1,6 @@
 import traceback, datetime, asyncio, string, random, time, os, aiofiles, aiofiles.os
-from database.database import db
-from pyrogram import filters
-from pyrogram import Client
+from database.access import db
+from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 
@@ -30,19 +29,19 @@ async def send_msg(user_id, message):
 
 
 @Client.on_message(filters.private & filters.command(["broadcast"]) & filters.reply)
-async def broadcast_(c, m):
-    if m.from_user.id != Config.OWNER_ID:
+async def broadcast_(bot, update):
+    if update.from_user.id != Config.OWNER_ID:
         return
     all_users = await db.get_all_users()
 
-    broadcast_msg = m.reply_to_message
+    broadcast_msg = update.reply_to_message
 
     while True:
         broadcast_id = ''.join([random.choice(string.ascii_letters) for i in range(3)])
         if not broadcast_ids.get(broadcast_id):
             break
 
-    out = await m.reply_text(
+    out = await update.reply_text(
         text = f"Broadcast initiated! You will be notified with log file when all the users are notified."
     )
     start_time = time.time()
@@ -58,7 +57,7 @@ async def broadcast_(c, m):
         success = success
     )
 
-    async with aiofiles.open('broadcast.txt', 'w') as broadcast_log_file:
+    async with aiofiles.open("broadcast.txt", "w") as broadcast_log_file:
         async for user in all_users:
 
             sts, msg = await send_msg(
@@ -96,12 +95,12 @@ async def broadcast_(c, m):
     await out.delete()
 
     if failed == 0:
-        await m.reply_text(
+        await update.reply_text(
             text=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
             quote=True
         )
     else:
-        await m.reply_document(
+        await update.reply_document(
             document='broadcast.txt',
             caption=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
             quote=True
