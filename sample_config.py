@@ -1,7 +1,8 @@
 import os
-import logging
 import re
 from os import environ
+import logging
+logger = logging.getLogger(__name__)
 
 id_pattern = re.compile(r'^.\d+$')
 
@@ -60,7 +61,7 @@ class Config(object):
     # Log channel for banning spammers
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-100"))
     
-    LOGGER = logging
+    #LOGGER = logging
 
     # maximum message length in Telegram
     MAX_MESSAGE_LENGTH = 4096
@@ -94,3 +95,8 @@ class Config(object):
     ##ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
     ##DATABASE_URI = environ.get('DATABASE_URI', "")
     ##DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
+    try:
+        TRACE_CHANNEL = int(os.environ.get("TRACE_CHANNEL")) if os.environ.get("TRACE_CHANNEL", "") else None
+    except:
+        TRACE_CHANNEL = None
+        logger.warning("Trace channel id was invalid")
