@@ -1,8 +1,13 @@
 from pyrogram import Client, filters
 import datetime
 import time
-from database.database import db
-from plugins.admin import ADMINS
+from plugins.admin import db
+
+if bool(os.environ.get("WEBHOOK", False)):
+    from sample_config import Config
+else:
+    from config import Config
+    
 import asyncio
 
 
@@ -28,7 +33,7 @@ async def broadcast_messages(user_id, message):
     except Exception as e:
         return False, "Error"
         
-@Client.on_message(filters.command("broadcast") & filters.user(ADMINS) & filters.reply)
+@Client.on_message(filters.command("broadcast") & filters.user(Config.ADMINS) & filters.reply)
 # https://t.me/GetTGLink/4178
 async def verupikkals(bot, message):
     users = await db.get_all_users()
