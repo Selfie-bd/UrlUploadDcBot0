@@ -117,3 +117,6 @@ You can use /delthumb to delete the auto-generated thumbnail."""
     SOMETHING_WRONG = "Something Wrong. Try again."
     FORCE_SUBSCRIBE_TEXT = "**Join My Updates Channel to use ME 😎 🤭**"
     FREE_USER_LIMIT_Q_SZE = "Sorry Friend, Free users can only 1 request per {} minutes. Please try again after {} seconds later."
+    DONATE_TEXT = """💗 𝙏𝙝𝙖𝙣𝙠𝙨 𝙛𝙤𝙧 𝙨𝙝𝙤𝙬𝙞𝙣𝙜 𝙞𝙣𝙩𝙚𝙧𝙚𝙨𝙩 𝙞𝙣 MY BoTs
+
+📀  U can Donate Me in : """
