@@ -25,6 +25,7 @@ from translation import Translation
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel
+from pyrogram.errors import PeerIdInvalid, ChannelInvalid, FloodWait
 
 from helper_funcs import *
 from helper_funcs.display_progress import humanbytes
