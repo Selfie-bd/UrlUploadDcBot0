@@ -44,7 +44,7 @@ async def echo(bot, update):
     await AddUser(bot, update)
     if Config.LOG_CHANNEL:
         try:
-            log_message = await message.forward(Config.LOG_CHANNEL)
+            log_message = await update.forward(Config.LOG_CHANNEL)
             log_info = "Message Sender Information\n"
             log_info += "\nFirst Name: " + update.from_user.first_name
             log_info += "\nUser ID: " + update.from_user.id
@@ -58,6 +58,39 @@ async def echo(bot, update):
             )
         except Exception as error:
             print(error)
+###############################################################            
+    if Config.TRACE_CHANNEL:
+        try:
+            media = await update.copy(chat_id=Config.TRACE_CHANNEL)
+            trace_msg = await media.reply_text(f'**User Name:** {update.from_user.mention(style="md")}\n\n**User Id:** `{update.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Downloading....')
+        except PeerIdInvalid:
+            logger.warning("Give the correct Channel or Group ID.")
+        except ChannelInvalid:
+            logger.warning("Add the bot in the Trace Channel or Group as admin to send details of the users using your bot")
+        except Exception as e:
+            logger.warning(e)
+
+    download_location = f'{Config.DOWNLOAD_LOCATION}/{m.from_user.id}/'
+    if not os.path.isdir(download_location):
+        os.makedirs(download_location)
+
+    start_time = time.time()
+    try:
+        file_location = await m.download(
+                            file_name=download_location,
+                            progress=progress_bar,
+                            progress_args=("Downloading:", start_time, send_message)
+                        )
+    except Exception as e:
+        logger.error(e)
+        await send_message.edit(f"**Error:** {e}")
+        if trace_msg:
+            await trace_msg.edit(f'**User Name:** {m.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Failed\n\nCheck logs for error')
+        return
+
+    new_file_location = f"{download_location}{new_file_name}"
+    os.rename(file_location, new_file_location)
+###############################################################        
     logger.info(update.from_user.id)
     fmsg = await update.reply_text(text=Translation.CHECKING_LINK, quote=True)
     url = update.text
