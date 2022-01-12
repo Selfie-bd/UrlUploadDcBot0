@@ -88,9 +88,6 @@ async def echo(bot, update):
         if trace_msg:
             await trace_msg.edit(f'**User Name:** {update.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Failed\n\nCheck logs for error')
         return
-
-    new_file_location = f"{download_location}{new_file_name}"
-    os.rename(file_location, new_file_location)
 ###############################################################        
     logger.info(update.from_user.id)
     fmsg = await update.reply_text(text=Translation.CHECKING_LINK, quote=True)
