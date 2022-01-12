@@ -3,13 +3,13 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-import os
 import json
 import math
 import os
 import shutil
 import subprocess
 import time
+import pyrogram
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
@@ -20,29 +20,19 @@ from plugins.youtube_dl_button import youtube_dl_call_back
 from plugins.dl_button import ddl_call_back
 from translation import Translation
 from pyrogram import Client
-from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
-from plugins.dl_button import ddl_call_back
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
+from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
 from PIL import Image
-
+from plugins.zee5_dl import zee5_execute
 
 
 @Client.on_callback_query()
 async def button(bot, update):
-    if update.from_user.id in Config.BANNED_USERS:
-        await bot.delete_messages(
-            chat_id=update.message.chat.id,
-            message_ids=update.message.message_id,
-            revoke=True
-        )
-        return
-    # logger.info(update)
     cb_data = update.data
     if ":" in cb_data:
-        # unzip formats
-        extract_dir_path = Config.DOWNLOAD_LOCATION + \
+        extract_dir_path = "./DOWNLOADS" + \
             "/" + str(update.from_user.id) + "zipped" + "/"
         if not os.path.isdir(extract_dir_path):
             await bot.delete_messages(
@@ -60,7 +50,7 @@ async def button(bot, update):
                 pass
             await bot.edit_message_text(
                 chat_id=update.message.chat.id,
-                text=Translation.CANCEL_STR,
+                text="**Process Cancelled**",
                 message_id=update.message.message_id
             )
         elif index_extractor == "ALL":
@@ -120,7 +110,7 @@ async def button(bot, update):
                 text=Translation.ZIP_UPLOADED_STR.format("1", "0"),
                 message_id=update.message.message_id
             )
-    elif "|" in update.data:
+    if "|" in update.data:
         await youtube_dl_call_back(bot, update)
     elif "=" in update.data:
         await ddl_call_back(bot, update)
@@ -142,11 +132,14 @@ async def button(bot, update):
             reply_markup=Translation.ABOUT_BUTTONS,
             disable_web_page_preview=True
         )
-    elif update.data == "donate":
-        await update.message.edit_text(
-            text=Translation.DONATE_TEXT,
-            reply_markup=Translation.DONATE_BUTTONS,
-            disable_web_page_preview=True
-        )
     else:
+        await update.message.delete()
+
+@Client.on_callback_query()
+async def formatbuttons(bot, update):
+
+    if "|" in update.data:
+        await zee5_execute(bot, update)
+
+    elif "closeformat" in update.data:     
         await update.message.delete()
