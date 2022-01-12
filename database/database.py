@@ -1,7 +1,5 @@
 import datetime
 import motor.motor_asyncio
-from pyrogram import Client
-from pyrogram.types import Message
 from sample_config import Config
 
 
@@ -10,7 +8,7 @@ class Database:
     def __init__(self, uri, database_name):
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
         self.db = self._client[database_name]
-        self.col = self.db.USERS
+        self.col = self.db.users
 
     def new_user(self, id):
         return dict(id=id, thumbnail=None)
@@ -41,7 +39,6 @@ class Database:
     async def get_thumbnail(self, id):
         user = await self.col.find_one({'id': int(id)})
         return user.get('thumbnail', None)
-
 
 
 
