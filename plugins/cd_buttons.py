@@ -13,16 +13,6 @@ import time
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
-
-    
-        
-          
-    
-
-        
-    
-    @@ -20,29 +20,19 @@
-  
 else:
     from config import Config
 from plugins.youtube_dl_button import youtube_dl_call_back
@@ -55,16 +45,6 @@ async def button(bot, update):
             "/" + str(update.from_user.id) + "zipped" + "/"
         if not os.path.isdir(extract_dir_path):
             await bot.delete_messages(
-
-    
-        
-          
-    
-
-        
-    
-    @@ -60,7 +50,7 @@ async def button(bot, update):
-  
                 chat_id=update.message.chat.id,
                 message_ids=update.message.message_id,
                 revoke=True
@@ -84,21 +64,7 @@ async def button(bot, update):
             )
         elif index_extractor == "ALL":
 
-    
-          
-            
-    
-
-          
-          
-            
-    
-
-          
-    
-    @@ -120,7 +110,7 @@ async def button(bot, update):
-  
-            i = 0
+    i = 0
             for file_content in zip_file_contents:
                 current_file_name = os.path.join(extract_dir_path, file_content)
                 start_time = time.time()
@@ -159,15 +125,6 @@ async def button(bot, update):
     elif "=" in update.data:
         await ddl_call_back(bot, update)
 
-    
-        
-          
-    
-
-        
-    
-    @@ -142,11 +132,14 @@ async def button(bot, update):
-  
     elif update.data == "home":
         await update.message.edit_text(
             text=Translation.START_TEXT.format(update.from_user.mention),
