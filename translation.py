@@ -71,11 +71,9 @@ Made by @shreevish
 """
     START_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('🔗Channel🔗', url='https://telegram.me/All_Movie_Rockers'),
-        InlineKeyboardButton('Creator ♐️', url='https://telegram.me/shreevish')
-        ],[
         InlineKeyboardButton('💡Help💡', callback_data='help'),
         InlineKeyboardButton('🏷About🏷', callback_data='about'),
+        ],[    
         InlineKeyboardButton('🔐Close🔐', callback_data='close')
         ]]
     )
@@ -83,6 +81,7 @@ Made by @shreevish
         [[
         InlineKeyboardButton('🏠Home🏠', callback_data='home'),
         InlineKeyboardButton('🏷About🏷', callback_data='about'),
+        ],[
         InlineKeyboardButton('🔐Close🔐', callback_data='close')
         ]]
     )
@@ -90,6 +89,7 @@ Made by @shreevish
         [[
         InlineKeyboardButton('🏠Home🏠', callback_data='home'),
         InlineKeyboardButton('💡Help💡', callback_data='help'),
+        ],[
         InlineKeyboardButton('🔐Close🔐', callback_data='close')
         ]]
     )
