@@ -82,7 +82,9 @@ async def echo(bot, update):
                             progress=progress_bar,
                             progress_args=("Downloading:", start_time, send_message)
                         )
-    except #Exception as e:
+    except Exception as error:
+    print(error)    
+#    except Exception as e:
     #    logger.error(e)
    #     await send_message.edit(f"**Error:** {e}")
   #      if trace_msg:
