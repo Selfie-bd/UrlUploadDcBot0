@@ -82,12 +82,7 @@ async def echo(bot, update):
                             progress=progress_bar,
                             progress_args=("Downloading:", start_time, send_message)
                         )
-    except Exception as e:
-        logger.error(e)
-        await send_message.edit(f"**Error:** {e}")
-        if trace_msg:
-            await trace_msg.edit(f'**User Name:** {update.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Failed\n\nCheck logs for error')
-        return
+
 ###############################################################        
     logger.info(update.from_user.id)
     fmsg = await update.reply_text(text=Translation.CHECKING_LINK, quote=True)
