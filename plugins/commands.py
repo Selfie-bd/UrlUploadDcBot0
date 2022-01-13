@@ -6,7 +6,7 @@ else:
 from translation import Translation
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
+#######################################################################################
 from pyrogram.errors.exceptions.bad_request_400 import MessageTooLong, PeerIdInvalid
 from sample_config import Config
 from database.users_chats_db import db
@@ -14,7 +14,7 @@ from sample_comfig import temp
 from pyrogram.errors import ChatAdminRequired
 
 
-
+#######################################################################################
 
 
 @Client.on_message(filters.command(["start"]) & filters.private)
@@ -137,3 +137,14 @@ async def list_users(bot, message):
         with open('users.txt', 'w+') as outfile:
             outfile.write(out)
         await message.reply_document('users.txt', caption="List Of Users") 
+        
+        
+#######################################################################################        
+    
+@Client.on_message(filters.private & filters.command('total'))
+async def sts(bot, message):
+    if message.from_user.id != Config.ADMINS:
+        return 
+    total_users = await db.total_users_count()
+    await message.reply_text(text=f"Total user(s) {total_users}", quote=True)
+
