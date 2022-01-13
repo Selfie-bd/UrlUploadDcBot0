@@ -6,12 +6,12 @@ from database.users_chats_db import db
 from sample_config import Config
 import asyncio
 
-###############################################################
+
 
 async def broadcast_messages(user_id, message):
     try:
         await message.copy(chat_id=user_id)
-        return True, "Succes"
+        return True, "Success"
     except FloodWait as e:
         await asyncio.sleep(e.x)
         return await broadcast_messages(user_id, message)
@@ -28,10 +28,10 @@ async def broadcast_messages(user_id, message):
         return False, "Error"
     except Exception as e:
         return False, "Error"
-    
-###############################################################    
+
+
         
-@Client.on_message(filters.command(["broadcast"]) & filters.user(Config.ADMINS) & filters.reply)
+@Client.on_message(filters.command("broadcast") & filters.user(Config.ADMINS) & filters.reply)
 # https://t.me/GetTGLink/4178
 async def verupikkals(bot, message):
     users = await db.get_all_users()
@@ -52,7 +52,7 @@ async def verupikkals(bot, message):
         if pti:
             success += 1
         elif pti == False:
-            if sh == "Bocked":
+            if sh == "Blocked":
                 blocked+=1
             elif sh == "Deleted":
                 deleted += 1
