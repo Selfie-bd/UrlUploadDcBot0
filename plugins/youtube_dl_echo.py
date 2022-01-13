@@ -26,6 +26,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 from database.database import *
+from database.users_chats_db import db
 from helper_funcs.display_progress import humanbytes
 from helper_funcs.help_uploadbot import DownLoadFile
 
@@ -55,14 +56,9 @@ async def echo(bot, update):
     logger.info(update.from_user.id)
     fmsg = await update.reply_text(text=Translation.CHECKING_LINK, quote=True)
     url = update.text
-        if not await db.get_chat(message.chat.id):
-            total=await client.get_chat_members_count(message.chat.id)
-            await client.send_message(LOG_CHANNEL, script.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, "Unknown"))       
-            await db.add_chat(message.chat.id, message.chat.title)
-        return 
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)
-        await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
+        await client.send_message(ConfigLOG_CHANNEL, Translation.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if Config.UPDATE_CHANNEL:
         try:
             user = await bot.get_chat_member(Config.UPDATE_CHANNEL, update.from_user.id)
