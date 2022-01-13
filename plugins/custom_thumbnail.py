@@ -1,13 +1,10 @@
 import os
-import time
-import numpy
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
     from config import Config
 
-from PIL import Image
 from pyrogram import Client, filters    
 
 from translation import Translation
@@ -74,19 +71,21 @@ async def show_thumb(bot, update):
             thumb_image_path = thumb_image_path
         else:
             thumb_image_path = None    
-
+    
     if thumb_image_path is not None:
         try:
             await bot.send_photo(
                 chat_id=update.chat.id,
                 photo=thumb_image_path
+                caption=f"Your current saved thumbnail 🦠",
+                reply_to_message_id=update.message_id
             )
         except:
             pass
-
+        
     elif thumb_image_path is None:
         await bot.send_message(
             chat_id=update.chat.id,
-            text="no thumbnail found",
+            text=f"No Thumbnail found 🤒",
             reply_to_message_id=update.message_id
         )
