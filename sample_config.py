@@ -56,3 +56,6 @@ class Config(object):
     
     # Log channel for banning spammers
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-100"))
+    
+    # spate to divide admins
+    ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
