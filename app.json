@@ -50,10 +50,6 @@
       "description": "default thumbnail to be used in the videos. Incase, youtube-dl is unable to find a thumbnail.",
       "value": "https://telegra.ph/file/8eddfc57dde92ec6e288e.jpg"
     },
-    "DATABASE_URL": {
-      "description": "mongoDB URI. Get this value from https://www.mongodb.com. For more help watch this video - https://youtu.be/dsuTn4qV2GA",
-      "required": true
-    },
     "MONGODB_URI": {
       "description": "Your MongoDB URI",
       "required": false
