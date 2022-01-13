@@ -46,7 +46,7 @@ class Config(object):
     ADL_BOT_RQ = {}
 
     # watermark file
-    DEF_WATER_MARK_FILE = ""
+    DEF_WATER_MARK_FILE = "@All_Movie_Rocker"
 
     # Sql Database url
     MONGODB_URI = os.environ.get("MONGODB_URI", "")
