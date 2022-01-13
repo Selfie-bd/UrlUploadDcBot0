@@ -1,4 +1,3 @@
-import sqlite3
 import os
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
@@ -16,26 +15,27 @@ async def start(bot, update):
         reply_markup=Translation.START_BUTTONS
     )
 
-@Client.on_message(filters.command(["donate"]) & filters.private)
-async def upgrade(bot, update):
+
+@Client.on_message(filters.command(["help"]) & filters.private)
+async def help(bot, update):
     await update.reply_text(
-        text=Translation.SONATE_TEXT,
-        reply_markup=Translation.DONATE_BUTTONS,
-        disable_web_page_preview=True
+        text=Translation.HELP_TEXT,
+        disable_web_page_preview=True,
+        reply_markup=Translation.HELP_BUTTONS
     )
 
 @Client.on_message(filters.command(["about"]) & filters.private)
-async def get_me_info(bot, update):
-        await update.message.edit_text(
-            text=Translation.ABOUT_TEXT,
-            reply_markup=Translation.ABOUT_BUTTONS,
-            disable_web_page_preview=True
+async def about(bot, update):
+    await update.reply_text(
+        text=Translation.ABOUT_TEXT,
+        disable_web_page_preview=True,
+        reply_markup=Translation.ABOUT_BUTTONS
     )
 
-@Client.on_message(filters.command(["help"]) & filters.private)
-async def help_user(bot, update):
+@Client.on_message(filters.command(["donate"]) & filters.private)
+async def dobate(bot, update):
         await update.message.edit_text(
-            text=Translation.HELP_TEXT,
-            reply_markup=Translation.HELP_BUTTONS,
+            text=Translation.DONATE_TEXT,
+            reply_markup=Translation.DONATE_BUTTONS,
             disable_web_page_preview=True
     )
