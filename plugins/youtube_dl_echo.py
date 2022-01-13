@@ -55,11 +55,11 @@ async def echo(bot, update):
     logger.info(update.from_user.id)
     fmsg = await update.reply_text(text=Translation.CHECKING_LINK, quote=True)
     url = update.text
-    if not await db.get_chat(message.chat.id):
+        if not await db.get_chat(message.chat.id):
             total=await client.get_chat_members_count(message.chat.id)
             await client.send_message(LOG_CHANNEL, script.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, "Unknown"))       
             await db.add_chat(message.chat.id, message.chat.title)
-            return 
+        return 
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
@@ -67,7 +67,7 @@ async def echo(bot, update):
         try:
             user = await bot.get_chat_member(Config.UPDATE_CHANNEL, update.from_user.id)
             if user.status == "kicked":
-              await bot.edit_message_text(text=Translation.BANNED_USER_TEXT, message_id=fmsg.message_id)
+              await bot.edit_message_text(text=Config.BANNED_CHATS, message_id=fmsg.message_id)
               return
         except UserNotParticipant:
             await bot.edit_message_text(chat_id=update.chat.id, text=Translation.FORCE_SUBSCRIBE_TEXT, message_id=fmsg.message_id, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="😎 Join Channel 😎", url=f"https://telegram.me/{Config.UPDATE_CHANNEL}")]]))
