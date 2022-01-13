@@ -27,23 +27,23 @@ async def start(bot, update):
             [
                 InlineKeyboardButton('ℹ️ Help', url=f"https://t.me/{temp.U_NAME}?start=help"),
             ]
-        ]
-    reply_markup = InlineKeyboardMarkup(buttons)
-    await update.reply_text(
-        text=Translation.START_TEXT.format(update.from_user.mention),
-        disable_web_page_preview=True,
-        reply_markup=Translation.START_BUTTONS
-    )
-    await asyncio.sleep(2) # 😢 https://github.com/EvamariaTG/EvaMaria/blob/master/plugins/p_ttishow.py#L17 😬 wait a bit, before checking.
-    if not await db.get_chat(message.chat.id):
-        total=await client.get_chat_members_count(message.chat.id)
-        await client.send_message(Config.LOG_CHANNEL, Translation.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, "Unknown"))       
-        await db.add_chat(message.chat.id, message.chat.title)
-    return 
-if not await db.is_user_exist(message.from_user.id):
-    await db.add_user(message.from_user.id, message.from_user.first_name)
-    await client.send_message(Config.LOG_CHANNEL, Translation.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
-    return
+            ]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await update.reply_text(
+            text=Translation.START_TEXT.format(update.from_user.mention),
+            disable_web_page_preview=True,
+            reply_markup=Translation.START_BUTTONS
+        )
+        await asyncio.sleep(2) # 😢 https://github.com/EvamariaTG/EvaMaria/blob/master/plugins/p_ttishow.py#L17 😬 wait a bit, before checking.
+        if not await db.get_chat(message.chat.id):
+            total=await client.get_chat_members_count(message.chat.id)
+            await client.send_message(Config.LOG_CHANNEL, Translation.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, "Unknown"))       
+            await db.add_chat(message.chat.id, message.chat.title)
+        return 
+    if not await db.is_user_exist(message.from_user.id):
+        await db.add_user(message.from_user.id, message.from_user.first_name)
+        await client.send_message(Config.LOG_CHANNEL, Translation.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
+        return
 
 @Client.on_message(filters.command(["help"]) & filters.private)
 async def help(bot, update):
