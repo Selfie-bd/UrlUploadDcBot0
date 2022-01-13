@@ -76,7 +76,7 @@ async def show_thumb(bot, update):
         try:
             await bot.send_photo(
                 chat_id=update.chat.id,
-                photo=thumb_image_path
+                photo=thumb_image_path,
                 caption=f"Your current saved thumbnail 🦠",
                 reply_to_message_id=update.message_id
             )
