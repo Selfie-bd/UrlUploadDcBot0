@@ -67,7 +67,7 @@ async def verupikkals(bot, message):
     await sts.edit(f"Broadcast Completed:\nCompleted in {time_taken} seconds.\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")
 
     
-@Clinton.on_message(filters.private & filters.command('total'))
+@Client.on_message(filters.private & filters.command('total'))
 async def sts(bot, message):
     if message.from_user.id != Config.ADMINS:
         return 
