@@ -65,11 +65,3 @@ async def verupikkals(bot, message):
             await sts.edit(f"Broadcast in progress:\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")    
     time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
     await sts.edit(f"Broadcast Completed:\nCompleted in {time_taken} seconds.\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")
-
-    
-@Client.on_message(filters.private & filters.command('total'))
-async def sts(bot, message):
-    if message.from_user.id != Config.ADMINS:
-        return 
-    total_users = await db.total_users_count()
-    await message.reply_text(text=f"Total user(s) {total_users}", quote=True)
