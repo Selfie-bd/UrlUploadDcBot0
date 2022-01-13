@@ -58,7 +58,7 @@ async def echo(bot, update):
     url = update.text
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)
-        await client.send_message(ConfigLOG_CHANNEL, Translation.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
+        await client.send_message(Config.LOG_CHANNEL, Translation.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if Config.UPDATE_CHANNEL:
         try:
             user = await bot.get_chat_member(Config.UPDATE_CHANNEL, update.from_user.id)
