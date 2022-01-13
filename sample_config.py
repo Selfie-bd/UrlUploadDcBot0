@@ -1,4 +1,7 @@
 import os
+import re
+
+id_pattern = re.compile(r'^.\d+$')
 
 class Config(object):
 
