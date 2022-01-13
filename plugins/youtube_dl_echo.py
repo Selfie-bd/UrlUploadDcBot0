@@ -57,12 +57,12 @@ async def echo(bot, update):
     url = update.text
     if Config.UPDATE_CHANNEL:
         try:
-            user = await bot.get_chat_member(Config.UPDATE_CHANNEL, update.from_user.id)
+            user = await bot.get_chat_member(Config.UPDATE_CHANNEL, update.chat.id)
             if user.status == "kicked":
               await bot.edit_message_text(text=Translation.BANNED_USER_TEXT, message_id=fmsg.message_id)
               return
         except UserNotParticipant:
-            await bot.edit_message_text(chat_id=update.chat.id, text=Translation.FORCE_SUBSCRIBE_TEXT, message_id=fmsg.message_id, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="😎 Join My Channel 😎", url=f"https://telegram.me/{Config.UPDATE_CHANNEL}")]]))
+            await bot.edit_message_text(chat_id=update.chat.id, text=Translation.FORCE_SUBSCRIBE_TEXT, message_id=fmsg.message_id, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="😎 Join Channel 😎", url=f"https://telegram.me/{Config.UPDATE_CHANNEL}")]]))
             return
         except Exception:
             await bot.edit_message_text(chat_id=update.chat.id, text=Translation.SOMETHING_WRONG, message_id=fmsg.message_id)
@@ -200,11 +200,11 @@ async def echo(bot, update):
                 if format_string is not None and not "audio only" in format_string:
                     ikeyboard = [
                         InlineKeyboardButton(
-                            "🎞 S 🎞️ " + format_string + " video " + approx_file_size + " ",
+                            "🎞️ S " + format_string + " video " + approx_file_size + " ",
                             callback_data=(cb_string_video).encode("UTF-8")
                         ),
                         InlineKeyboardButton(
-                            "🗂️ D 🗂️ " + format_ext + " " + approx_file_size + " ",
+                            "🗂️ D " + format_ext + " " + approx_file_size + " ",
                             callback_data=(cb_string_file).encode("UTF-8")
                         )
                     ]
@@ -221,13 +221,13 @@ async def echo(bot, update):
                 else:
                     ikeyboard = [
                         InlineKeyboardButton(
-                            "🎞 SVideo 🎞️ [" +
+                            "🎞️ SVideo [" +
                             "] ( " +
                             approx_file_size + " )",
                             callback_data=(cb_string_video).encode("UTF-8")
                         ),
                         InlineKeyboardButton(
-                            "🗂️ DFile 🗂️ [" +
+                            "🗂️ DFile [" +
                             "] ( " +
                             approx_file_size + " )",
                             callback_data=(cb_string_file).encode("UTF-8")
@@ -240,13 +240,13 @@ async def echo(bot, update):
                 cb_string = "{}|{}|{}".format("audio", "320k", "mp3")
                 inline_keyboard.append([
                     InlineKeyboardButton(
-                        "🎶 MP3 🎶" + "(" + "64 kbps" + ")", callback_data=cb_string_64.encode("UTF-8")),
+                        "🎶MP3🎶" + "(" + "64 kbps" + ")", callback_data=cb_string_64.encode("UTF-8")),
                     InlineKeyboardButton(
-                        "🎶 MP3 🎶 " + "(" + "128 kbps" + ")", callback_data=cb_string_128.encode("UTF-8"))
+                        "🎶MP3🎶 " + "(" + "128 kbps" + ")", callback_data=cb_string_128.encode("UTF-8"))
                 ])
                 inline_keyboard.append([
                     InlineKeyboardButton(
-                        "🎶 MP3 🎶 " + "(" + "320 kbps" + ")", callback_data=cb_string.encode("UTF-8"))
+                        "🎶MP3🎶 " + "(" + "320 kbps" + ")", callback_data=cb_string.encode("UTF-8"))
                 ])
         else:
             format_id = response_json["format_id"]
@@ -257,11 +257,11 @@ async def echo(bot, update):
                 "video", format_id, format_ext)
             inline_keyboard.append([
                 InlineKeyboardButton(
-                    "🎞️SVideo🎞️",
+                    "🎞️ SVideo ",
                     callback_data=(cb_string_video).encode("UTF-8")
                 ),
                 InlineKeyboardButton(
-                    "🗂️DFile🗂️",
+                    "🗂️ DFile ",
                     callback_data=(cb_string_file).encode("UTF-8")
                 )
             ])
@@ -271,11 +271,11 @@ async def echo(bot, update):
                 "video", format_id, format_ext)
             inline_keyboard.append([
                 InlineKeyboardButton(
-                    "🎞️video🎞️",
+                    "🎞️ video ",
                     callback_data=(cb_string_video).encode("UTF-8")
                 ),
                 InlineKeyboardButton(
-                    "🗂️file🗂️",
+                    "🗂️ file ",
                     callback_data=(cb_string_file).encode("UTF-8")
                 )
             ])
@@ -322,11 +322,11 @@ async def echo(bot, update):
             "video", "OFL", "ENON")
         inline_keyboard.append([
             InlineKeyboardButton(
-                "🎞️SVideo🎞️",
+                "🎞️ SVideo ",
                 callback_data=(cb_string_video).encode("UTF-8")
             ),
             InlineKeyboardButton(
-                "🗂️DFile🗂️",
+                "🗂️ DFile ",
                 callback_data=(cb_string_file).encode("UTF-8")
             )
         ])
