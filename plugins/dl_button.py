@@ -51,8 +51,6 @@ async def ddl_call_back(bot, update):
             youtube_dl_url = youtube_dl_url.strip()
         if custom_file_name is not None:
             custom_file_name = custom_file_name.strip()
-        logger.info(youtube_dl_url)
-        logger.info(custom_file_name)
     else:
         for entity in update.message.reply_to_message.entities:
             if entity.type == "text_link":
@@ -144,7 +142,7 @@ async def ddl_call_back(bot, update):
                 thumb_image_path = None
 
             start_time = time.time()
-
+           
             if tg_send_type == "audio":
                 await bot.send_audio(
                     chat_id=update.message.chat.id,
