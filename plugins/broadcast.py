@@ -1,5 +1,6 @@
 
 from pyrogram import Client, filters
+from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
 import datetime
 import time
 from database.users_chats_db import db
