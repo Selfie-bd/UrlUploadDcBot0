@@ -62,3 +62,8 @@ class Config(object):
     
     # space to divide admins
     ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in os.environ.get('ADMINS', '').split()]
+    
+    # Sql Database url
+    DB_URI = os.environ.get("DATABASE_URL", "")
+    
+    
