@@ -19,6 +19,16 @@ from pyrogram.errors import ChatAdminRequired
 
 @Client.on_message(filters.command(["start"]) & filters.private)
 async def start(bot, update):
+    if message.chat.type in ['group', 'supergroup']:
+        buttons = [
+            [
+                InlineKeyboardButton('🤖 Updates', url='https://t.me/TeamEvamaria')
+            ],
+            [
+                InlineKeyboardButton('ℹ️ Help', url=f"https://t.me/{temp.U_NAME}?start=help"),
+            ]
+        ]
+    reply_markup = InlineKeyboardMarkup(buttons)
     await update.reply_text(
         text=Translation.START_TEXT.format(update.from_user.mention),
         disable_web_page_preview=True,
