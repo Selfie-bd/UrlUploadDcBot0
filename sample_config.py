@@ -61,4 +61,4 @@ class Config(object):
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-100"))
     
     # space to divide admins
-    ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
+    ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in os.environ.get('ADMINS', '').split()]
