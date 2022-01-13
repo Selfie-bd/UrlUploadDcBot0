@@ -52,7 +52,7 @@ class Config(object):
     MONGODB_URI = os.environ.get("MONGODB_URI", "")
     
     # Database Name
-    DATABASE_NAME = environ.get('DATABASE_NAME', "URL-BOT")
+    DATABASE_NAME = os.environ.get('DATABASE_NAME', "URL-BOT")
     
     # Log channel for banning spammers
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-100"))
