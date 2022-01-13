@@ -53,7 +53,7 @@ async def dobate(bot, update):
 #######################################################################################
 
 
-@Client.on_message(filters.command('ban') & filters.user(ADMINS))
+@Client.on_message(filters.command(["ban"]) & filters.user(Config.ADMINS))
 async def ban_a_user(bot, message):
     # https://t.me/GetTGLink/4185
     if len(message.command) == 1:
@@ -87,7 +87,7 @@ async def ban_a_user(bot, message):
 
 
     
-@Client.on_message(filters.command('unban') & filters.user(ADMINS))
+@Client.on_message(filters.command(["unban"]) & filters.user(Config.ADMINS))
 async def unban_a_user(bot, message):
     if len(message.command) == 1:
         return await message.reply('Give me a user id / username')
@@ -120,7 +120,7 @@ async def unban_a_user(bot, message):
 
 
     
-@Client.on_message(filters.command('users') & filters.user(ADMINS))
+@Client.on_message(filters.command(["users"]) & filters.user(Config.ADMINS))
 async def list_users(bot, message):
     # https://t.me/GetTGLink/4184
     raju = await message.reply('Getting List Of Users')
@@ -141,7 +141,7 @@ async def list_users(bot, message):
         
 #######################################################################################        
     
-@Client.on_message(filters.private & filters.command('total'))
+@Client.on_message(filters.private & filters.command(["total"]))
 async def sts(bot, message):
     if message.from_user.id != Config.ADMINS:
         return 
