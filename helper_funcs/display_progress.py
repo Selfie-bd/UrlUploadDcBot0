@@ -1,19 +1,30 @@
-import os
 import math
 import time
+import asyncio
+import bot
+from typing import Union
+from pyrogram.types import Message, CallbackQuery
+from pyrogram.errors import FloodWait
+
+PROGRESS = """
+⏳ **Percentage:** `{0}%`
+✅ **Done:** `{1}`
+💠 **Total:** `{2}`
+📶 **Speed:** `{3}/s`
+🕰 **ETA:** `{4}`
+"""
 
 
 async def progress_for_pyrogram(
     current,
     total,
     ud_type,
-    message,
+    message: Union[Message, CallbackQuery],
     start
 ):
     now = time.time()
     diff = now - start
     if round(diff % 10.00) == 0 or current == total:
-        # if round(current / total * 100, 0) % 5 == 0:
         percentage = current * 100 / total
         speed = current / diff
         elapsed_time = round(diff) * 1000
@@ -23,26 +34,40 @@ async def progress_for_pyrogram(
         elapsed_time = TimeFormatter(milliseconds=elapsed_time)
         estimated_total_time = TimeFormatter(milliseconds=estimated_total_time)
 
-        progress = "[{0}{1}] \n<b>• Percentage :</b> {2}%\n".format(
-            ''.join(["🍏" for i in range(math.floor(percentage / 10))]),
-            ''.join(["🍎" for i in range(10 - math.floor(percentage / 10))]),
-            round(percentage, 2))
+        progress = "[{0}{1}] \n".format(
+            ''.join(["❤️" for _ in range(math.floor(percentage / 5))]),
+            ''.join(["🤍" for _ in range(20 - math.floor(percentage / 5))])
+            )
 
-        tmp = progress + "<b>• Completed :</b> {0}\n<b>• Size :</b> {1}\n<b>• Speed :</b> {2}/s\n<b>• ETA :</b> {3}\n".format(
+        tmp = progress + PROGRESS.format(
+            round(percentage, 2),
             humanbytes(current),
             humanbytes(total),
             humanbytes(speed),
-            # elapsed_time if elapsed_time != '' else "0 s",
             estimated_total_time if estimated_total_time != '' else "0 s"
         )
         try:
-            await message.edit(
-                text="{}\n{}".format(
-                    ud_type,
-                    tmp
+            try:
+                _ = message.message_id
+                await message.edit(
+                    text="**{}**\n\n {}".format(
+                        ud_type,
+                        tmp
+                    ),
+                    parse_mode='markdown'
                 )
-            )
-        except:
+            except AttributeError:
+                await bot.bot.edit_inline_caption(
+                    inline_message_id=message.inline_message_id,
+                    caption="**{}**\n\n {}".format(
+                        ud_type,
+                        tmp
+                    ),
+                    parse_mode='markdown'
+                )
+        except FloodWait as e:
+            await asyncio.sleep(e.x)
+        except Exception:
             pass
 
 
@@ -65,9 +90,9 @@ def TimeFormatter(milliseconds: int) -> str:
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
-    tmp = ((str(days) + "d, ") if days else "") + \
-        ((str(hours) + "h, ") if hours else "") + \
-        ((str(minutes) + "m, ") if minutes else "") + \
-        ((str(seconds) + "s, ") if seconds else "") + \
-        ((str(milliseconds) + "ms, ") if milliseconds else "")
+    tmp = ((str(days) + " days, ") if days else "") + \
+          ((str(hours) + " hours, ") if hours else "") + \
+          ((str(minutes) + " min, ") if minutes else "") + \
+          ((str(seconds) + " sec, ") if seconds else "") + \
+          ((str(milliseconds) + " millisec, ") if milliseconds else "")
     return tmp[:-2]
