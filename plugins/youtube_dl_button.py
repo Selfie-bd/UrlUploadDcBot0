@@ -174,7 +174,7 @@ async def youtube_dl_call_back(bot, update):
             except Exception as e:
                 await bot.edit_message_text(
                     chat_id=update.message.chat.id,
-                    text="*Some errors occured while downloading video!*",
+                    text="Some errors occured while downloading video!",
                     message_id=update.message.message_id
                 )
                 logger.info("FnF error - " + str(e))
@@ -270,7 +270,7 @@ async def youtube_dl_call_back(bot, update):
                 )
             elif tg_send_type == "vm":
                 await update.message.reply_to_message.reply_chat_action("upload_video_note")
-
+                
                 await bot.send_video_note(
                     chat_id=update.message.chat.id,
                     video_note=download_directory,
