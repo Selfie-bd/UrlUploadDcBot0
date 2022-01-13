@@ -10,7 +10,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors.exceptions.bad_request_400 import MessageTooLong, PeerIdInvalid
 from sample_config import Config
 from database.users_chats_db import db
-from sample_comfig import temp
+from sample_config import temp
 from pyrogram.errors import ChatAdminRequired
 
 
