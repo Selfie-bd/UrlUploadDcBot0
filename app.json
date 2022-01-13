@@ -7,13 +7,17 @@
     "uploader",
     "pyrogram"
   ],
-  "success_url": "https://github.com/Satyamurthi",
-  "website": "https://github.com/Satyamurthi/AMR-Url_Uploader",
-  "repository": "https://github.com/Satyamurthi/AMR-Url_Uploader",
+  "success_url": "https://github.com/satyushree",
+  "website": "https://telegram.me/shreevish",
+  "repository": "https://github.com/satyushree/AMR-Url_Uploader-v2",
   "env": {
     "WEBHOOK": {
       "description": "Leave this as it is!",
       "value": "ANYTHING"
+    },
+    "ADMINS": {
+      "description": "Username or ID of Admin. Separate multiple Admins by space.",
+      "required": true
     },
     "BOT_TOKEN": {
       "description": "Your bot token from @botfather, as a string."
@@ -24,60 +28,20 @@
     "API_HASH": {
       "description": "Get this value from https://my.telegram.org"
     },
-    "ADMINS": {
-      "description": "Username or ID of Admin. Separate multiple Admins by space.",
-      "required": true
-    },
     "AUTH_USERS": {
-      "description": "allow only pre-defined users to use this bot"
-    },
-    "DATABASE_URI": {
-      "description": "mongoDB URI. Get this value from https://www.mongodb.com. For more help watch this video - https://youtu.be/dsuTn4qV2GA",
-      "required": true
-    },
-    "DATABASE_NAME": {
-      "description": "Name of the database in mongoDB. For more help watch this video - https://youtu.be/dsuTn4qV2GA",
+      "description": "allow only pre-defined users to use this bot",
       "required": false
     },
     "TIME_LIMIT": {
       "description": "Set timeout for subprocess (In seconds)",
       "value": "0"
     },
+    "DATABASE_NAME": {
+      "description": "Name of the database in mongoDB. For more help watch this video - https://youtu.be/dsuTn4qV2GA",
+      "required": false
+    },
     "UPDATE_CHANNEL": {
       "description": "For Force Subscribe. Paste your Update channel USERNAME (without @)..",
-      "value": "0"
-    },
-    "LOG_CHANNEL": {
-      "description": "To get logs",
-      "value": "0"
-    },
-    "DEF_WATER_MARK_FILE": {
-      "description": "Set any name(Optional)",
-      "value": "0"
-    },
-    "DEF_THUMB_NAIL_VID_S": {
-      "description": "default thumbnail to be used in the videos. Incase, youtube-dl is unable to find a thumbnail.",
-      "value": "0"
-    },
-    "SCREENSHOTS": {
-      "description": "To get Screenshots (True/False)",
-      "value": "0"
-    },
-    "OWNER_ID": {
-      "description": "Your Telegram ID",
-      "value": "0"
-    },
-    "DATABASE_URL": {
-      "description": "Your MongoDB URI",
-      "value": "0"
-    },
-    "SESSION_NAME": {
-      "description": "Your Session Name",
-      "value": "URL-UPLOADER"
-    },
-    "BANNED_USERS": {
-      "description": "Banned Unwanted members..",
-      "value": "0",
       "required": false
     }
   },
