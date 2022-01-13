@@ -46,6 +46,10 @@
       "description": "To get logs",
       "required": false
     },
+    "DEF_THUMB_NAIL_VID_S": {
+      "description": "default thumbnail to be used in the videos. Incase, youtube-dl is unable to find a thumbnail.",
+      "value": "0"
+    },
     "UPDATE_CHANNEL": {
       "description": "For Force Subscribe. Paste your Update channel USERNAME (without @)..",
       "required": false
