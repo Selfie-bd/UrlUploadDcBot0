@@ -7,7 +7,7 @@ Hello,
 i am Telegram URL Upload Bot! Created by @shreevish
 
 Please send me any direct download URL Link, i can upload to telegram as File/Video
-
+ererqwer
  🚨 . . . Note : its support almost all direct Url's except torrent link & some links . . . 🚨
  
 🚨 PRON video🔞 Links gives you PERMANENT BAN 🚨
