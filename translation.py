@@ -4,7 +4,7 @@ class Translation(object):
 
     START_TEXT = """
 Hello,
-i am Telegram URL Upload Bot! Created by @shreevish
+i am Telegram URL Upload Bot! Created by @SelfieBd
 
 Please send me any direct download URL Link, i can upload to telegram as File/Video
 
@@ -14,7 +14,7 @@ Please send me any direct download URL Link, i can upload to telegram as File/Vi
 
        ┈┈┈••💙✿❤️✿💚••┈┈┈
        
-URL-UPLOADER bot created by @shreevish
+URL-UPLOADER bot created by @GroupDcBots
 
 ➼/start = To Check whether the bot is alive or not
 ➼/help = To Know how to use me! 
@@ -23,7 +23,7 @@ URL-UPLOADER bot created by @shreevish
 ⚠️Note :- Join My Channel before paste the link"""
     RENAME_403_ERR = "Sorry. You are not permitted to rename this file."
     ABS_TEXT = " Please don't be selfish."
-    UPGRADE_TEXT = "Contact @shreevish for Details"
+    UPGRADE_TEXT = "Contact @selfiebd for Details"
     FORMAT_SELECTION = """📭 𝗦𝗲𝗹𝗲𝗰𝘁 𝗔𝗻𝗱 𝗖𝗵𝗼𝘀𝗲 𝗬𝗼𝘂𝗿 𝗙𝗼𝗿𝗺𝗮𝘁👇
 
 🎞️ 𝗩𝗜𝗗𝗘𝗢 = Upload as Streamble.
@@ -35,7 +35,7 @@ URL-UPLOADER bot created by @shreevish
 
 ➼pLease send photo to save Thumblail before you press any Below Button
 
-👲Powered By: @All_Movie_Rockers.
+👲Powered By: @GroupDcBots
 """
     HELP_TEXT = """
 <b>1.<u>Link to Media or File</u></b>
@@ -57,40 +57,41 @@ Select the button.
 <b><u>Show Thumbnail</u></b>
 ➠ Send /showthumb to view custom thumbnail.
 
-Made by @shreevish
+Made by @GroupDc
 """
     ABOUT_TEXT = """
 - **Bot :** `URL Uploader`
-- **Creator :** [꧁★HACKER★꧂](https://telegram.me/shreevish)
-- **Channel :** [Aʟʟ Mᴏᴠɪᴇ Rᴏᴄᴋᴇʀs](https://telegram.me/FayasNoushad)
+- **Version:** `V1.01`
+- **Creator :** [꧁★SelfieBD★꧂](https://telegram.me/Selfiebd)
+- **Channel :** [Groupdcbots](https://telegram.me/groupdcbots)
 - **Credits :** `Everyone in this journey`
-- **Source :** [Click here](https://github.com/Satyamurthi/AMR-Url_Uploader)
+- **Source :** [Click here](https://github.com/selfie-bd/UrlUploadDcBot)
 - **Language :** [Python3](https://python.org)
 - **Library :** [Pyrogram v1.2.0](https://pyrogram.org)
 - **Server :** [Heroku](https://heroku.com)
 """
     START_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('🔗Channel🔗', url='https://telegram.me/All_Movie_Rockers'),
-        InlineKeyboardButton('Creator ♐️', url='https://telegram.me/shreevish')
+        InlineKeyboardButton('🔰 Updates Channel ', url='https://telegram.me/groupdcbots'),
+        InlineKeyboardButton('Support Group 👥', url='https://telegram.me/Groupdc')
         ],[
-        InlineKeyboardButton('💡Help💡', callback_data='help'),
-        InlineKeyboardButton('🏷About🏷', callback_data='about'),
-        InlineKeyboardButton('🔐Close🔐', callback_data='close')
+        InlineKeyboardButton('⚠️ Help', callback_data='help'),
+        InlineKeyboardButton('About ♨️', callback_data='about'),
+        InlineKeyboardButton('Close', callback_data='close')
         ]]
     )
     HELP_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('🏠Home🏠', callback_data='home'),
-        InlineKeyboardButton('🏷About🏷', callback_data='about'),
-        InlineKeyboardButton('🔐Close🔐', callback_data='close')
+        InlineKeyboardButton('🏠 Home', callback_data='home'),
+        InlineKeyboardButton('About ♨️', callback_data='about'),
+        InlineKeyboardButton('Close', callback_data='close')
         ]]
     )
     ABOUT_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('🏠Home🏠', callback_data='home'),
-        InlineKeyboardButton('💡Help💡', callback_data='help'),
-        InlineKeyboardButton('🔐Close🔐', callback_data='close')
+        InlineKeyboardButton('🏠 Home', callback_data='home'),
+        InlineKeyboardButton('Help ⚠️', callback_data='help'),
+        InlineKeyboardButton('Close', callback_data='close')
         ]]
     )
     FORMAT_SELECTION = """<b>Select the desired format:</b> <a href='{}'>file size might be approximate</a>
