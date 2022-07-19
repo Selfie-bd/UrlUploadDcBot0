@@ -1,21 +1,12 @@
 
-
-
-
-<h1 align="center">AMR-Url_Uploader</h1>
-<p align="center">
-  <a href="https://github.com/Avipatilpro/FileStreamBot">
-    <img src="https://socialify.git.ci/satyushree/AMR-Url_Uploader/image?description=1&font=Bitter&forks=1&issues=1&logo=https%3A%2F%2Ftelegra.ph%2Ffile%2F8eddfc57dde92ec6e288e.jpg&pattern=Brick%20Wall&pulls=1&stargazers=1&theme=Dark" alt="Cover Image" width="550">
-  </a>
-  
   <p align="center">
     A simple url uploader bot with permenent thumbnail support .
     <br />
    </strong></a>
     <br />
-    <a href="https://github.com/satyushree/AMR-Url_Uploader/issues">Report a Bug</a>
+    <a href="https://github.com/Selfie-bd/UrlUploadDcBot/issues">Report a Bug</a>
     |
-    <a href="https://github.com/satyushree/AMR-Url_Uploader/issues">Request Feature</a>
+    <a href="https://github.com/selfie-bd/UrlUploadDcBot/issues">Request Feature</a>
   </p>
 </p>
 
@@ -64,13 +55,21 @@ then goto the <a href="#mandatory-vars">variables tab</a> for more info on setti
   <summary><b>Host it on VPS Locally :</b></summary>
 
 ```py
-git clone https://github.com/Satyamurthi/AMR-Url_Uploader
-cd AMR-Url_Uploader
+git clone https://github.com/selfie-bd/UrlUploadDcBot
+```
+```
+cd UrlUploadDcBot
+```
 virtualenv -p python3 VENV
 . ./VENV/bin/activate
+```
 pip install -r requirements.txt
+```
+```
 cp sample_config.py config.py
+```
 --- EDIT config.py values appropriately ---
+```
 python bot.py
 ```
 
@@ -112,7 +111,7 @@ AUTH_USERS=your_user_id
 
 `TIME_LIMIT` : For time to next process in second
 
-`DEF_WATER_MARK_FILE` : Name you want (Ex:- @All_Movie_Rockers)
+`DEF_WATER_MARK_FILE` : Name you want (Ex:- @hdflimz)
 
 `DEF_THUMB_NAIL_VID_S` : Link of the photo
 
@@ -138,13 +137,13 @@ To get an instant stream link, just forward any media to the bot and boom, its f
 Bot also Supported with Channels. Just add bot Channel as Admin. If any new file comes in Channel it will edit it with **Get Download Link** Button. </details>
 
 
-- [Aʟʟ Mᴏᴠɪᴇ Rᴏᴄᴋᴇʀs](https://telegram.me/All_Movie_Rockers)
+- [Groupdcbots](https://telegram.me/groupdcbots)
 
 ## Accounts
 
-* [YouTube](https://youtube.com/channel/--)
-* [GitHub](https://github.com/Satyamurthi)
-* [Telegram](https://telegram.me/shreevish)
+* [YouTube Video Tutorial](https://youtu.be/38Q8yd99UVw)
+* [GitHub](https://github.com/selfie-bd)
+* [Telegram](https://telegram.me/selfiebd)
 
 ## Credits
 
